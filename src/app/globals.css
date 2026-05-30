@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+/* Custom Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2A2E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5500;
+}
+
+body {
+  background-color: #0B0B0C;
+  color: #E2E8F0;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+/* Technical grid background */
+.engineering-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.engineering-grid-fine {
+  background-size: 10px 10px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(20, 20, 22, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel-glow {
+  background: rgba(28, 28, 31, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 85, 0, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(255, 85, 0, 0.05);
+}
+
+/* Molten metal glow effect */
+.molten-glow-orange {
+  filter: drop-shadow(0 0 15px rgba(255, 85, 0, 0.6))
+          drop-shadow(0 0 30px rgba(255, 107, 0, 0.3));
+}
+
+.molten-text-glow {
+  text-shadow: 0 0 10px rgba(255, 85, 0, 0.5), 0 0 20px rgba(255, 85, 0, 0.2);
+}
+
+/* Custom interactive radial glow for cards */
+.radial-hover-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.radial-hover-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(255, 85, 0, 0.08),
+    transparent 40%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Scroll indicator bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #FF5500, #FFD700);
+  z-index: 100;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* Industrial Corner Accents for Premium Look */
+.industrial-corners::before,
+.industrial-corners::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(255, 85, 0, 0.5);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.industrial-corners::before {
+  top: 4px;
+  left: 4px;
+  border-width: 1px 0 0 1px;
+}
+
+.industrial-corners::after {
+  bottom: 4px;
+  right: 4px;
+  border-width: 0 1px 1px 0;
+}
