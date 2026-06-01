@@ -49,9 +49,10 @@ export default function CompanyIntro() {
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-industrial-orange/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* Top row: Content + 3D Model side by side, vertically centered */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Company Overview & Timeline */}
+          {/* Left Column: Company Overview */}
           <div className="lg:col-span-6 space-y-10">
             <div>
               <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block mb-3">
@@ -84,73 +85,51 @@ export default function CompanyIntro() {
                 })}
               </div>
             </div>
-
-            {/* Animated Timeline */}
-            <div className="pt-6 border-t border-industrial-border">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-industrial-text-muted mb-6">Evolutionary Roadmap</h3>
-              
-              <div className="relative pl-6 border-l border-industrial-border space-y-8">
-                {TIMELINE_EVENTS.map((evt, idx) => (
-                  <motion.div 
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    key={idx} 
-                    className="relative"
-                  >
-                    {/* Ring indicator on left vertical line */}
-                    <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-2 border-industrial-orange ring-4 ring-white" />
-                    
-                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-1">
-                      <span className="font-display font-extrabold text-industrial-orange text-lg font-mono">
-                        {evt.year}
-                      </span>
-                      <h4 className="font-display font-semibold text-industrial-text text-sm">
-                        {evt.title}
-                      </h4>
-                    </div>
-                    
-                    <p className="text-xs text-industrial-text-secondary leading-relaxed">
-                      {evt.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right Column: 3D interactive viewport */}
-          <div className="lg:col-span-6 lg:sticky lg:top-28">
-            <div className="space-y-6">
-              <ThreeCasting />
-              
-              {/* Technical Specifications Blueprint Overlay */}
-              <div className="bg-industrial-bg-alt border border-industrial-border rounded-xl p-6 font-mono text-[11px] text-industrial-text-secondary relative overflow-hidden shadow-sm">
-                <div className="absolute top-0 right-0 w-20 h-20 engineering-grid opacity-30" />
-                <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-                  <div>
-                    <span className="text-industrial-text-muted block uppercase">Product Line</span>
-                    <span className="text-industrial-text font-semibold">MINERAX-HEAVY-CAST</span>
-                  </div>
-                  <div>
-                    <span className="text-industrial-text-muted block uppercase">Standard Grade</span>
-                    <span className="text-industrial-text font-semibold">ASTM A216 WCB Steel</span>
-                  </div>
-                  <div>
-                    <span className="text-industrial-text-muted block uppercase">Smelting Temp</span>
-                    <span className="text-industrial-text font-semibold">1680°C Max</span>
-                  </div>
-                  <div>
-                    <span className="text-industrial-text-muted block uppercase">Tolerance Spec</span>
-                    <span className="text-industrial-text font-semibold">ISO 8062 SF03</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="lg:col-span-6">
+            <ThreeCasting />
           </div>
 
         </div>
+
+        {/* Horizontal Timeline - Full Width Below */}
+        <div className="mt-20 pt-10 border-t border-industrial-border">
+          <h3 className="font-mono text-xs uppercase tracking-widest text-industrial-text-muted mb-10">Evolutionary Roadmap</h3>
+          
+          <div className="relative">
+            {/* Horizontal connecting line */}
+            <div className="absolute top-[5px] left-0 right-0 h-[1px] bg-industrial-border hidden md:block" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {TIMELINE_EVENTS.map((evt, idx) => (
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.12 }}
+                  key={idx} 
+                  className="relative pt-6 md:pt-5"
+                >
+                  {/* Dot indicator on horizontal line */}
+                  <div className="absolute top-0 left-0 w-2.5 h-2.5 rounded-full bg-white border-2 border-industrial-orange ring-4 ring-white" />
+                  
+                  <span className="font-display font-extrabold text-industrial-orange text-lg font-mono block mb-1">
+                    {evt.year}
+                  </span>
+                  <h4 className="font-display font-semibold text-industrial-text text-sm mb-2">
+                    {evt.title}
+                  </h4>
+                  <p className="text-xs text-industrial-text-secondary leading-relaxed">
+                    {evt.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
