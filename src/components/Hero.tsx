@@ -59,21 +59,21 @@ function StatCounter({ value, suffix, label }: StatItemProps) {
 
 const SLIDES = [
   {
-    src: "/furnace.png",
+    videoSrc: "/1.mp4",
     caption: "Precision Melting & Pouring",
     title: "Induction Melting Systems",
     description: "High-capacity induction furnaces engineered for optimal thermodynamic efficiency, alloy consistency, and automated temperature regulation.",
     cta: "View Foundry Systems"
   },
   {
-    src: "/robotic.png",
+    videoSrc: "/2.mp4",
     caption: "Automated Foundry Lines",
     title: "Robotic Sand Molding",
     description: "Advanced green sand and no-bake molding lines integrated with automated core setting and automated cooling tracks.",
     cta: "Explore Automation"
   },
   {
-    src: "/heavy.png",
+    videoSrc: "/3.mp4",
     caption: "Heavy Engineering Castings",
     title: "Heavy Casting Solutions",
     description: "Specialized manufacture of heavy-duty components including turbine housings, railway bogie frames, and massive gear blanks.",
@@ -83,22 +83,22 @@ const SLIDES = [
 
 const ANIMATIONS = [
   {
-    initial: { opacity: 0, scale: 0.9, rotate: -2 },
-    animate: { opacity: 1, scale: 1, rotate: 0 },
-    exit: { opacity: 0, scale: 1.1, rotate: 2 },
-    transition: { duration: 0.7, ease: "easeOut" }
+    initial: { opacity: 0, scale: 0.9, filter: "blur(8px)" },
+    animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+    exit: { opacity: 0, scale: 1.1, filter: "blur(8px)" },
+    transition: { duration: 0.8, ease: "easeOut" }
   },
   {
-    initial: { opacity: 0, x: 200 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -200 },
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+    initial: { opacity: 0, x: 150, scale: 0.95 },
+    animate: { opacity: 1, x: 0, scale: 1 },
+    exit: { opacity: 0, x: -150, scale: 0.95 },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
   },
   {
-    initial: { opacity: 0, y: 150 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -150 },
-    transition: { duration: 0.7, ease: "easeInOut" }
+    initial: { opacity: 0, y: 100, rotate: 1 },
+    animate: { opacity: 1, y: 0, rotate: 0 },
+    exit: { opacity: 0, y: -100, rotate: -1 },
+    transition: { duration: 0.8, ease: "easeInOut" }
   }
 ];
 
@@ -182,7 +182,7 @@ export default function Hero() {
 
         {/* Right Column: Slideshow */}
         <div className="w-full md:w-[48%] flex items-center justify-center">
-          <div className="relative w-full aspect-[4/3] md:aspect-[1.3] overflow-hidden bg-transparent">
+          <div className="relative w-full aspect-[4/3] md:aspect-[1.3] overflow-hidden rounded-2xl border border-industrial-border/10 shadow-lg bg-white">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -192,9 +192,13 @@ export default function Hero() {
                 transition={ANIMATIONS[current].transition}
                 className="absolute inset-0 w-full h-full"
               >
-                <div
-                  className="w-full h-full bg-cover bg-center mix-blend-multiply"
-                  style={{ backgroundImage: `url(${SLIDES[current].src})` }}
+                <video
+                  src={SLIDES[current].videoSrc}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
               </motion.div>
             </AnimatePresence>

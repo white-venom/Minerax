@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Hammer, Layers, ShieldCheck, ChevronRight } from "lucide-react";
+import { ArrowRight, Hammer, Layers, ShieldCheck, ChevronRight, ChevronLeft } from "lucide-react";
 
 interface ProjectItem {
   title: string;
@@ -55,12 +55,55 @@ const PROJECTS_DATA: ProjectItem[] = [
 
 export default function FeaturedProjects() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      const cardWidth = window.innerWidth >= 768 ? 444 : 334;
+      scrollRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" });
+    }
+  };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 350, behavior: "smooth" });
+      const cardWidth = window.innerWidth >= 768 ? 444 : 334;
+      scrollRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
     }
   };
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    const cardWidth = window.innerWidth >= 768 ? 444 : 334;
+    const setWidth = PROJECTS_DATA.length * cardWidth;
+
+    if (scrollLeft >= setWidth * 2) {
+      scrollRef.current.scrollLeft = scrollLeft - setWidth;
+    } else if (scrollLeft <= setWidth - clientWidth) {
+      scrollRef.current.scrollLeft = scrollLeft + setWidth;
+    }
+  };
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      const cardWidth = window.innerWidth >= 768 ? 444 : 334;
+      const setWidth = PROJECTS_DATA.length * cardWidth;
+      scrollRef.current.scrollLeft = setWidth;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const cardWidth = window.innerWidth >= 768 ? 444 : 334;
+        scrollRef.current.scrollBy({ left: cardWidth, behavior: "smooth" });
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section className="py-24 bg-white text-industrial-text relative overflow-hidden border-t border-industrial-border">
@@ -80,77 +123,94 @@ export default function FeaturedProjects() {
               Featured <span className="text-industrial-steel-medium">Projects</span>
             </h2>
           </div>
-          
-          <div className="flex items-center gap-4 mt-6 md:mt-0">
-            <span className="text-xs font-mono text-industrial-text-secondary hidden md:inline">
-              [ Drag cards to explore or scroll right ]
-            </span>
-            <button 
-              onClick={scrollRight}
-              className="w-10 h-10 rounded border border-industrial-border flex items-center justify-center hover:border-industrial-orange hover:text-industrial-orange transition-colors group"
-            >
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
-          </div>
         </div>
 
-        {/* Horizontal Drag Carousel */}
-        <motion.div 
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-8 scrollbar-none cursor-grab active:cursor-grabbing snap-x select-none"
-          whileTap={{ cursor: "grabbing" }}
+        {/* Carousel Container wrapper for absolute navigation buttons */}
+        <div 
+          className="relative px-2 md:px-0"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
-          {PROJECTS_DATA.map((proj, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-[310px] md:w-[420px] bg-industrial-bg-alt border border-industrial-border rounded-xl p-6 md:p-8 flex flex-col justify-between snap-start relative group shadow-sm hover:shadow-md transition-shadow"
-            >
-              {/* Corner mechanical visual */}
-              <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-border border-b border-l border-industrial-border rounded-bl-lg flex items-center justify-center font-mono text-[10px] text-industrial-text-muted">
-                P-0{idx + 1}
-              </div>
+          
+          {/* Left Arrow Button */}
+          <button 
+            onClick={scrollLeft}
+            className="absolute left-2 md:left-0 md:-translate-x-1/2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/95 backdrop-blur-sm border border-industrial-border flex items-center justify-center hover:border-industrial-orange hover:text-industrial-orange transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_rgba(255,85,0,0.15)] group active:scale-95"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+          </button>
 
-              <div>
-                <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase block mb-2">
-                  {proj.client}
-                </span>
-                <h3 className="font-display font-extrabold text-lg md:text-xl text-industrial-text uppercase tracking-tight mb-4 pr-10">
-                  {proj.title}
-                </h3>
-                <p className="text-xs text-industrial-text-secondary leading-relaxed mb-6">
-                  {proj.desc}
-                </p>
-              </div>
+          {/* Right Arrow Button */}
+          <button 
+            onClick={scrollRight}
+            className="absolute right-2 md:right-0 md:translate-x-1/2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/95 backdrop-blur-sm border border-industrial-border flex items-center justify-center hover:border-industrial-orange hover:text-industrial-orange transition-all shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_20px_rgba(255,85,0,0.15)] group active:scale-95"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+          </button>
 
-              {/* Specs Table */}
-              <div className="space-y-4 border-t border-industrial-border pt-6">
-                <div className="grid grid-cols-2 gap-y-3 font-mono text-[10px]">
-                  <div>
-                    <span className="text-industrial-text-muted block">Component Weight</span>
-                    <span className="text-industrial-text font-semibold">{proj.weight}</span>
-                  </div>
-                  <div>
-                    <span className="text-industrial-text-muted block">Material Grade</span>
-                    <span className="text-industrial-text font-semibold">{proj.material}</span>
-                  </div>
-                  <div>
-                    <span className="text-industrial-text-muted block">Dimensions</span>
-                    <span className="text-industrial-text font-semibold">{proj.dimensions}</span>
-                  </div>
-                  <div>
-                    <span className="text-industrial-text-muted block">Casting Yield</span>
-                    <span className="text-industrial-orange font-semibold">{proj.capacity}</span>
-                  </div>
+          {/* Horizontal Drag Carousel */}
+          <motion.div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex gap-6 overflow-x-auto pb-8 scrollbar-none cursor-grab active:cursor-grabbing snap-x select-none"
+            whileTap={{ cursor: "grabbing" }}
+          >
+            {[...PROJECTS_DATA, ...PROJECTS_DATA, ...PROJECTS_DATA].map((proj, idx) => (
+              <div
+                key={idx}
+                className="flex-shrink-0 w-[310px] md:w-[420px] bg-industrial-bg-alt border border-industrial-border rounded-xl p-6 md:p-8 flex flex-col justify-between snap-start relative group shadow-sm hover:shadow-md transition-shadow"
+              >
+                {/* Corner mechanical visual */}
+                <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-border border-b border-l border-industrial-border rounded-bl-lg flex items-center justify-center font-mono text-[10px] text-industrial-text-muted">
+                  P-0{(idx % PROJECTS_DATA.length) + 1}
                 </div>
 
-                <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-industrial-orange mt-2">
-                  VERIFY BLUEPRINT
-                  <ChevronRight className="w-3.5 h-3.5" />
+                <div>
+                  <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase block mb-2">
+                    {proj.client}
+                  </span>
+                  <h3 className="font-display font-extrabold text-lg md:text-xl text-industrial-text uppercase tracking-tight mb-4 pr-10">
+                    {proj.title}
+                  </h3>
+                  <p className="text-xs text-industrial-text-secondary leading-relaxed mb-6">
+                    {proj.desc}
+                  </p>
+                </div>
+
+                {/* Specs Table */}
+                <div className="space-y-4 border-t border-industrial-border pt-6">
+                  <div className="grid grid-cols-2 gap-y-3 font-mono text-[10px]">
+                    <div>
+                      <span className="text-industrial-text-muted block">Component Weight</span>
+                      <span className="text-industrial-text font-semibold">{proj.weight}</span>
+                    </div>
+                    <div>
+                      <span className="text-industrial-text-muted block">Material Grade</span>
+                      <span className="text-industrial-text font-semibold">{proj.material}</span>
+                    </div>
+                    <div>
+                      <span className="text-industrial-text-muted block">Dimensions</span>
+                      <span className="text-industrial-text font-semibold">{proj.dimensions}</span>
+                    </div>
+                    <div>
+                      <span className="text-industrial-text-muted block">Casting Yield</span>
+                      <span className="text-industrial-orange font-semibold">{proj.capacity}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-[11px] font-mono font-semibold text-industrial-orange mt-2">
+                    VERIFY BLUEPRINT
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
 
       </div>
     </section>
