@@ -2,12 +2,30 @@
  
 import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stage, useGLTF, AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
+import { OrbitControls, Stage, useGLTF, AdaptiveDpr, AdaptiveEvents, Environment } from "@react-three/drei";
 import * as THREE from "three";
  
 function MetalCastingMesh() {
   const { scene } = useGLTF("/model.glb");
   const meshRef = useRef<THREE.Group>(null);
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        if (child.material) {
+          const materials = Array.isArray(child.material) ? child.material : [child.material];
+          materials.forEach((mat) => {
+            if (mat instanceof THREE.MeshStandardMaterial) {
+              // Set the color explicitly to a premium metallic steel grey
+              mat.color.set("#a0a0a0");
+              mat.roughness = 0.35; // satin reflections
+              mat.metalness = 0.85; // metallic reflections
+            }
+          });
+        }
+      }
+    });
+  }, [scene]);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -85,16 +103,24 @@ export default function ThreeCasting() {
         className="w-full h-full cursor-grab active:cursor-grabbing"
       >
         <color attach="background" args={["#FAFAFA"]} />
-        <ambientLight intensity={0.7} />
-        <pointLight position={[10, 10, 10]} intensity={1.2} />
-        <directionalLight position={[-10, 10, -5]} intensity={1.0} />
+        <ambientLight intensity={1.2} />
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
+        <directionalLight position={[-10, 10, -5]} intensity={1.5} />
         
         {/* Soft glowing rim light to represent furnace background */}
-        <pointLight position={[-3, -2, -3]} intensity={1.5} color="#FF5500" />
+        <pointLight position={[-3, -2, -3]} intensity={2.0} color="#FF5500" />
         
         <Suspense fallback={null}>
+          {/* Procedural environment map for premium metallic reflections (computed once) */}
+          <Environment frames={1} resolution={256}>
+            <ambientLight intensity={1.5} />
+            <pointLight position={[10, 10, 10]} intensity={3.0} />
+            <pointLight position={[-10, 5, -10]} intensity={2.0} />
+            <pointLight position={[0, -10, 0]} intensity={1.5} color="#FF5500" />
+          </Environment>
+
           <Stage
-            intensity={0.5}
+            intensity={1.2}
             environment={null}
             shadows={false}
             adjustCamera={true}

@@ -164,97 +164,100 @@ export default function Hero() {
       {/* Main Split Content Area */}
       <motion.div
         style={{ opacity: opacityContent }}
-        className="relative z-20 flex-1 flex flex-col md:flex-row items-center justify-between container mx-auto px-6 pt-28 pb-6 gap-10 md:gap-16 w-full"
+        className="relative z-20 flex-1 flex items-center justify-center container mx-auto px-6 pt-28 pb-10 w-full"
       >
-        
-        {/* Left Column: Text Content */}
-        <div className="w-full md:w-[48%] flex flex-col justify-center min-h-[340px] text-left">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="space-y-5"
-            >
-              <span className="text-[11px] font-display font-bold tracking-[0.25em] text-industrial-orange uppercase block">
-                {SLIDES[current].caption}
-              </span>
-              <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-industrial-text uppercase">
-                {SLIDES[current].title}
-              </h1>
-              <p className="text-sm md:text-base text-industrial-text-secondary leading-relaxed max-w-lg">
-                {SLIDES[current].description}
-              </p>
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-industrial-steel-medium hover:text-industrial-orange transition-colors group pt-2"
+        <div className="w-full bg-white border border-industrial-border/10 shadow-xl rounded-3xl p-6 md:p-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 relative overflow-hidden">
+          {/* Subtle inside grid */}
+          <div className="absolute inset-0 engineering-grid opacity-5 pointer-events-none z-0" />
+          
+          {/* Left Column: Text Content */}
+          <div className="w-full md:w-[46%] flex flex-col justify-center min-h-[340px] text-left z-10">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="space-y-5"
               >
-                <span className="w-8 h-[1px] bg-industrial-orange inline-block group-hover:w-12 transition-all" />
-                {SLIDES[current].cta}
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Slide indicator dots */}
-          <div className="flex gap-2 mt-10">
-            {SLIDES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-[3px] rounded-full transition-all duration-500 ${
-                  current === i
-                    ? "w-8 bg-industrial-orange"
-                    : "w-3 bg-industrial-steel-light/30 hover:bg-industrial-steel-light/50"
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Right Column: Slideshow */}
-        <div className="w-full md:w-[48%] flex items-center justify-center">
-          <div className="relative w-full aspect-[4/3] md:aspect-[1.3] overflow-hidden rounded-2xl border border-industrial-border/10 shadow-lg bg-white">
-            {SLIDES.map((slide, idx) => {
-              const isCurrent = current === idx;
-              const anim = ANIMATIONS[idx];
-
-              return (
-                <motion.div
-                  key={idx}
-                  initial={anim.initial}
-                  animate={isCurrent ? anim.animate : anim.exit}
-                  transition={anim.transition}
-                  className="absolute inset-0 w-full h-full"
-                  style={{ pointerEvents: isCurrent ? "auto" : "none" }}
+                <span className="text-[11px] font-display font-bold tracking-[0.25em] text-industrial-orange uppercase block">
+                  {SLIDES[current].caption}
+                </span>
+                <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-industrial-text uppercase">
+                  {SLIDES[current].title}
+                </h1>
+                <p className="text-sm md:text-base text-industrial-text-secondary leading-relaxed max-w-lg">
+                  {SLIDES[current].description}
+                </p>
+                <Link
+                  href="/products"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-industrial-steel-medium hover:text-industrial-orange transition-colors group pt-2"
                 >
-                  <VideoSlide src={slide.videoSrc} isActive={isCurrent} />
-                </motion.div>
-              );
-            })}
-            
-            {/* Blending Feathered Overlays on all 4 edges */}
-            <div 
-              className="absolute inset-x-0 top-0 h-20 pointer-events-none z-10" 
-              style={{ background: "linear-gradient(to bottom, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
-            />
-            <div 
-              className="absolute inset-x-0 bottom-0 h-20 pointer-events-none z-10" 
-              style={{ background: "linear-gradient(to top, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
-            />
-            <div 
-              className="absolute inset-y-0 left-0 w-20 pointer-events-none z-10" 
-              style={{ background: "linear-gradient(to right, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
-            />
-            <div 
-              className="absolute inset-y-0 right-0 w-20 pointer-events-none z-10" 
-              style={{ background: "linear-gradient(to left, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
-            />
+                  <span className="w-8 h-[1px] bg-industrial-orange inline-block group-hover:w-12 transition-all" />
+                  {SLIDES[current].cta}
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Slide indicator dots */}
+            <div className="flex gap-2 mt-10">
+              {SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`h-[3px] rounded-full transition-all duration-500 ${
+                    current === i
+                      ? "w-8 bg-industrial-orange"
+                      : "w-3 bg-industrial-steel-light/30 hover:bg-industrial-steel-light/50"
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column: Slideshow */}
+          <div className="w-full md:w-[50%] flex items-center justify-center z-10">
+            <div className="relative w-full aspect-[4/3] md:aspect-[1.3] overflow-hidden rounded-2xl bg-white">
+              {SLIDES.map((slide, idx) => {
+                const isCurrent = current === idx;
+                const anim = ANIMATIONS[idx];
+
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={anim.initial}
+                    animate={isCurrent ? anim.animate : anim.exit}
+                    transition={anim.transition}
+                    className="absolute inset-0 w-full h-full"
+                    style={{ pointerEvents: isCurrent ? "auto" : "none" }}
+                  >
+                    <VideoSlide src={slide.videoSrc} isActive={isCurrent} />
+                  </motion.div>
+                );
+              })}
+              
+              {/* Blending Feathered Overlays on all 4 edges - blending to card background white (#FFFFFF) */}
+              <div 
+                className="absolute inset-x-0 top-0 h-20 pointer-events-none z-10" 
+                style={{ background: "linear-gradient(to bottom, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0) 100%)" }}
+              />
+              <div 
+                className="absolute inset-x-0 bottom-0 h-20 pointer-events-none z-10" 
+                style={{ background: "linear-gradient(to top, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0) 100%)" }}
+              />
+              <div 
+                className="absolute inset-y-0 left-0 w-20 pointer-events-none z-10" 
+                style={{ background: "linear-gradient(to right, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0) 100%)" }}
+              />
+              <div 
+                className="absolute inset-y-0 right-0 w-20 pointer-events-none z-10" 
+                style={{ background: "linear-gradient(to left, #FFFFFF 0%, rgba(255, 255, 255, 0.8) 25%, rgba(255, 255, 255, 0) 100%)" }}
+              />
+            </div>
           </div>
         </div>
-
       </motion.div>
 
       {/* ── Bottom Stats Bar ── */}
