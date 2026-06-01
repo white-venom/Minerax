@@ -16,7 +16,7 @@ export default function CallToAction() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationFrameId: number;
+    let animationFrameId: number | null = null;
     let width = (canvas.width = canvas.offsetWidth);
     let height = (canvas.height = canvas.offsetHeight);
 
@@ -42,7 +42,11 @@ export default function CallToAction() {
       });
     }
 
-    const animate = () => {
+    let isAnimating = false;
+
+    const draw = () => {
+      if (!isAnimating) return;
+
       ctx.clearRect(0, 0, width, height);
 
       // Draw background gradients — light mode
@@ -88,8 +92,39 @@ export default function CallToAction() {
         ctx.fill();
       });
 
-      animationFrameId = requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(draw);
     };
+
+    const startAnimating = () => {
+      if (!isAnimating) {
+        isAnimating = true;
+        draw();
+      }
+    };
+
+    const stopAnimating = () => {
+      isAnimating = false;
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startAnimating();
+        } else {
+          stopAnimating();
+        }
+      },
+      { threshold: 0.01 }
+    );
+
+    const section = canvas.closest("section");
+    if (section) {
+      observer.observe(section);
+    }
 
     const handleResize = () => {
       if (!canvas) return;
@@ -97,11 +132,11 @@ export default function CallToAction() {
       height = canvas.height = canvas.offsetHeight;
     };
 
-    animate();
     window.addEventListener("resize", handleResize);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stopAnimating();
+      observer.disconnect();
       window.removeEventListener("resize", handleResize);
     };
   }, []);

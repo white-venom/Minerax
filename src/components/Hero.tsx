@@ -102,6 +102,40 @@ const ANIMATIONS = [
   }
 ];
 
+interface VideoSlideProps {
+  src: string;
+  isActive: boolean;
+}
+
+function VideoSlide({ src, isActive }: VideoSlideProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isActive) {
+      video.play().catch((err) => {
+        console.warn("Video playback was interrupted or blocked:", err);
+      });
+    } else {
+      video.pause();
+    }
+  }, [isActive]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      loop
+      muted
+      playsInline
+      preload="auto"
+      className="w-full h-full object-cover"
+    />
+  );
+}
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
@@ -196,15 +230,7 @@ export default function Hero() {
                   className="absolute inset-0 w-full h-full"
                   style={{ pointerEvents: isCurrent ? "auto" : "none" }}
                 >
-                  <video
-                    src={slide.videoSrc}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="w-full h-full object-cover"
-                  />
+                  <VideoSlide src={slide.videoSrc} isActive={isCurrent} />
                 </motion.div>
               );
             })}

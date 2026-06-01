@@ -2,7 +2,7 @@
  
 import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stage, useGLTF } from "@react-three/drei";
+import { OrbitControls, Stage, useGLTF, AdaptiveDpr, AdaptiveEvents } from "@react-three/drei";
 import * as THREE from "three";
  
 function MetalCastingMesh() {
@@ -25,9 +25,29 @@ function MetalCastingMesh() {
  
 export default function ThreeCasting() {
   const [mounted, setMounted] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
  
   useEffect(() => {
     setMounted(true);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    const timer = setTimeout(() => {
+      if (containerRef.current) {
+        observer.observe(containerRef.current);
+      }
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
  
   if (!mounted) {
@@ -43,7 +63,7 @@ export default function ThreeCasting() {
   }
  
   return (
-    <div className="w-full h-[400px] bg-white border border-industrial-border rounded-xl relative overflow-hidden shadow-md">
+    <div ref={containerRef} className="w-full h-[400px] bg-white border border-industrial-border rounded-xl relative overflow-hidden shadow-md">
       <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
       <div className="absolute top-4 left-4 z-20 flex flex-col pointer-events-none">
         <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase">Active Viewport</span>
@@ -57,7 +77,13 @@ export default function ThreeCasting() {
         </div>
       </div>
  
-      <Canvas camera={{ position: [0, 0, 4], fov: 50 }} className="w-full h-full cursor-grab active:cursor-grabbing">
+      <Canvas 
+        camera={{ position: [0, 0, 4], fov: 50 }} 
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
+        frameloop={isInView ? "always" : "never"}
+        className="w-full h-full cursor-grab active:cursor-grabbing"
+      >
         <color attach="background" args={["#FAFAFA"]} />
         <ambientLight intensity={0.7} />
         <pointLight position={[10, 10, 10]} intensity={1.2} />
@@ -69,7 +95,7 @@ export default function ThreeCasting() {
         <Suspense fallback={null}>
           <Stage
             intensity={0.5}
-            environment="studio"
+            environment={null}
             shadows={false}
             adjustCamera={true}
           >
@@ -84,6 +110,8 @@ export default function ThreeCasting() {
           minDistance={1.5}
           maxDistance={6}
         />
+        <AdaptiveDpr pixelated />
+        <AdaptiveEvents />
       </Canvas>
     </div>
   );
