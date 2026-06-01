@@ -226,7 +226,7 @@ export default function Hero() {
       </motion.div>
 
       {/* ── Bottom Stats Bar ── */}
-      <div className="relative z-20 border-t border-b border-industrial-border/30 bg-transparent">
+      <div className="relative z-20 border-t border-b border-industrial-border/30 bg-industrial-bg-alt">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

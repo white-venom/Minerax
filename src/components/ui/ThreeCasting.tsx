@@ -1,95 +1,34 @@
 "use client";
-
-import { useRef, useState, useEffect } from "react";
+ 
+import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stage } from "@react-three/drei";
+import { OrbitControls, Stage, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-
+ 
 function MetalCastingMesh() {
+  const { scene } = useGLTF("/model.glb");
   const meshRef = useRef<THREE.Group>(null);
   
+  useEffect(() => {
+    scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  }, [scene]);
+
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.25;
+      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
     }
   });
 
   return (
-    <group ref={meshRef}>
-      {/* Central heavy cylindrical core */}
-      <mesh castShadow receiveShadow position={[0, 0, 0]}>
-        <cylinderGeometry args={[1.2, 1.2, 2.5, 32]} />
-        <meshStandardMaterial
-          color="#3A3D40"
-          roughness={0.25}
-          metalness={0.9}
-        />
-      </mesh>
-
-      {/* Flanged collar top */}
-      <mesh castShadow receiveShadow position={[0, 1.1, 0]}>
-        <cylinderGeometry args={[1.5, 1.5, 0.3, 32]} />
-        <meshStandardMaterial
-          color="#2C2F31"
-          roughness={0.3}
-          metalness={0.8}
-        />
-      </mesh>
-
-      {/* Flanged collar bottom */}
-      <mesh castShadow receiveShadow position={[0, -1.1, 0]}>
-        <cylinderGeometry args={[1.5, 1.5, 0.3, 32]} />
-        <meshStandardMaterial
-          color="#2C2F31"
-          roughness={0.3}
-          metalness={0.8}
-        />
-      </mesh>
-
-      {/* Cross-bore reinforcements */}
-      <mesh castShadow receiveShadow rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-        <cylinderGeometry args={[0.7, 0.7, 3.2, 24]} />
-        <meshStandardMaterial
-          color="#424549"
-          roughness={0.2}
-          metalness={0.95}
-        />
-      </mesh>
-
-      {/* Outer cooling fins (ring discs) */}
-      {[ -0.6, -0.2, 0.2, 0.6 ].map((yPos, i) => (
-        <mesh key={i} castShadow receiveShadow position={[0, yPos, 0]}>
-          <cylinderGeometry args={[1.35, 1.35, 0.08, 32]} />
-          <meshStandardMaterial
-            color="#FF5500"
-            emissive="#FF2200"
-            emissiveIntensity={0.15}
-            roughness={0.4}
-            metalness={0.9}
-          />
-        </mesh>
-      ))}
-
-      {/* Bolting holes/projections on the flange */}
-      {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-        const rad = (angle * Math.PI) / 180;
-        const radius = 1.35;
-        const x = Math.cos(rad) * radius;
-        const z = Math.sin(rad) * radius;
-        return (
-          <group key={i} position={[x, 1.1, z]}>
-            <mesh castShadow receiveShadow>
-              <cylinderGeometry args={[0.08, 0.08, 0.35, 8]} />
-              <meshStandardMaterial
-                color="#8E8E93"
-                metalness={1}
-                roughness={0.1}
-              />
-            </mesh>
-          </group>
-        );
-      })}
-    </group>
+    <primitive 
+      ref={meshRef} 
+      object={scene} 
+    />
   );
 }
 
@@ -136,14 +75,16 @@ export default function ThreeCasting() {
         {/* Soft glowing rim light to represent furnace background */}
         <pointLight position={[-3, -2, -3]} intensity={3} color="#FF5500" />
         
-        <Stage
-          intensity={0.6}
-          environment="studio"
-          shadows={{ type: "contact", opacity: 0.6, blur: 2 }}
-          adjustCamera={true}
-        >
-          <MetalCastingMesh />
-        </Stage>
+        <Suspense fallback={null}>
+          <Stage
+            intensity={0.6}
+            environment="studio"
+            shadows={{ type: "contact", opacity: 0.6, blur: 2 }}
+            adjustCamera={true}
+          >
+            <MetalCastingMesh />
+          </Stage>
+        </Suspense>
         <OrbitControls
           enableZoom={true}
           enablePan={false}
