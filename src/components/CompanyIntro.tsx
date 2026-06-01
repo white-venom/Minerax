@@ -54,7 +54,7 @@ export default function CompanyIntro() {
           {/* Left Column: Company Overview & Timeline */}
           <div className="lg:col-span-6 space-y-10">
             <div>
-              <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
+              <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block mb-3">
                 01 // Introduction
               </span>
               <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-6">

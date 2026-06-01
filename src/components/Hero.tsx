@@ -50,7 +50,7 @@ function StatCounter({ value, suffix, label }: StatItemProps) {
         <span>{count}</span>
         <span className="text-industrial-orange ml-0.5 text-2xl">{suffix}</span>
       </div>
-      <div className="text-industrial-text-muted font-mono text-[10px] uppercase tracking-widest mt-1">
+      <div className="text-industrial-text-secondary font-mono text-[10px] uppercase tracking-widest mt-1 font-bold">
         {label}
       </div>
     </div>
@@ -144,7 +144,7 @@ export default function Hero() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="space-y-5"
             >
-              <span className="text-[11px] font-mono tracking-[0.25em] text-industrial-orange uppercase block">
+              <span className="text-[11px] font-display font-bold tracking-[0.25em] text-industrial-orange uppercase block">
                 {SLIDES[current].caption}
               </span>
               <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-industrial-text uppercase">

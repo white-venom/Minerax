@@ -73,8 +73,8 @@ export default function FeaturedProjects() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-industrial-border">
           <div>
-            <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
-              08 // Portfolio
+            <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block mb-3">
+              06 // Project Portfolio
             </span>
             <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase">
               Featured <span className="text-industrial-steel-medium">Projects</span>

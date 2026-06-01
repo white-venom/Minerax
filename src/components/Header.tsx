@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: "Products", href: "/products" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Industries Served", href: "/industries" },
-  { label: "Certification", href: "/certification" },
+  { label: "Certifications", href: "/certification" },
   { label: "Blogs", href: "/review-bulletin" },
   { label: "About Us", href: "/about" },
 ];
@@ -44,7 +44,7 @@ export default function Header() {
         
         {/* Technical branding logo */}
         <Link href="/" className="flex items-center group">
-          <Logo size="md" iconOnly={true} />
+          <Logo size="lg" iconOnly={true} />
         </Link>
 
         {/* Desktop Navigation */}

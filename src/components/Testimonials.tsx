@@ -64,8 +64,8 @@ export default function Testimonials() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
-            10 // Client Endorsements
+          <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block mb-3">
+            07 // Client Testimonials
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-4">
             Industrial <span className="text-industrial-steel-medium">Partnerships</span>

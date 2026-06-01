@@ -260,7 +260,7 @@ export default function Preloader() {
               <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-industrial-text-muted/30" />
               <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-industrial-text-muted/30" />
 
-              <Logo iconOnly size="lg" color={logoColor} />
+              <Logo iconOnly size="xl" color={logoColor} />
             </div>
 
             {/* Sub-Brand Title */}

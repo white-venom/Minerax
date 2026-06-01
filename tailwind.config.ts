@@ -17,7 +17,7 @@ const config: Config = {
           // Text (dark — matches logo)
           text: "#1A1A1A",
           "text-secondary": "#4B5563",
-          "text-muted": "#9CA3AF",
+          "text-muted": "#5E6675",
           // Borders
           border: "#E5E7EB",
           "border-light": "#F3F4F6",

@@ -189,13 +189,5 @@ export default function CustomCursor() {
     };
   }, [isMobile, spawnEmbers]);
 
-  if (isMobile) return null;
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-[9999]"
-      style={{ mixBlendMode: "normal" }}
-    />
-  );
+  return null;
 }

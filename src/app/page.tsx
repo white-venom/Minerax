@@ -5,7 +5,6 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import CompanyIntro from "@/components/CompanyIntro";
-import ServicesShowcase from "@/components/ServicesShowcase";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ManufacturingExcellence from "@/components/ManufacturingExcellence";
 
@@ -52,8 +51,7 @@ export default function Home() {
         {/* 2. Interactive Company Introduction */}
         <CompanyIntro />
 
-        {/* 3. Services Showcase */}
-        <ServicesShowcase />
+
 
         {/* 4. Why Choose MineraX */}
         <WhyChooseUs />

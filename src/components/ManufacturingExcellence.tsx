@@ -52,38 +52,13 @@ export default function ManufacturingExcellence() {
     <section className="py-24 bg-white text-industrial-text relative overflow-hidden border-y border-industrial-border">
       {/* Background technical layout */}
       <div className="absolute inset-0 engineering-grid opacity-30 pointer-events-none" />
-      <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-industrial-border z-0 hidden lg:block -translate-y-12" />
-
-      {/* SVG Animated Glowing line background for desktop */}
-      <div className="absolute top-1/2 left-[8%] right-[8%] h-4 -translate-y-14 z-0 hidden lg:block overflow-hidden pointer-events-none">
-        <svg className="w-full h-full" fill="none" viewBox="0 0 1000 10" preserveAspectRatio="none">
-          <path 
-            d="M0,5 H1000" 
-            stroke="#E5E7EB" 
-            strokeWidth="3" 
-          />
-          <path 
-            d="M0,5 H1000" 
-            stroke="#FF5500" 
-            strokeWidth="3" 
-            strokeDasharray="20, 40"
-            className="animate-[pulseLine_12s_linear_infinite]"
-          />
-        </svg>
-        <style jsx global>{`
-          @keyframes pulseLine {
-            0% { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: -300; }
-          }
-        `}</style>
-      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Section Title */}
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
-            06 // Assembly Flow
+          <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block mb-3">
+            05 // Manufacturing Process
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-4">
             Manufacturing <span className="text-industrial-steel-medium">Excellence</span>
@@ -94,47 +69,76 @@ export default function ManufacturingExcellence() {
         </div>
 
         {/* Process chain layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 relative z-10">
-          {PROCESS_STEPS.map((step, idx) => {
-            const IconComp = step.icon;
-            
-            return (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                key={idx}
-                className="flex flex-col items-center text-center group relative"
-              >
-                {/* Visual Node */}
-                <div className="w-16 h-16 rounded-full bg-white border border-industrial-border flex items-center justify-center relative z-10 mb-5 group-hover:border-industrial-orange transition-all duration-300 shadow-md group-hover:shadow-[0_0_20px_rgba(255,85,0,0.1)]">
-                  
-                  {/* Step counter tag */}
-                  <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-industrial-orange text-[9px] font-mono font-bold flex items-center justify-center text-white">
-                    0{idx + 1}
+        <div className="relative">
+          {/* Static connecting line for desktop (runs behind circles) */}
+          <div className="absolute top-[32px] left-[7%] right-[7%] h-[2px] bg-industrial-border z-0 hidden lg:block" />
+
+          {/* SVG Animated Glowing line background for desktop */}
+          <div className="absolute top-[28px] left-[7%] right-[7%] h-2 z-0 hidden lg:block overflow-hidden pointer-events-none">
+            <svg className="w-full h-full" fill="none" viewBox="0 0 1000 8" preserveAspectRatio="none">
+              <path 
+                d="M0,4 H1000" 
+                stroke="#E5E7EB" 
+                strokeWidth="2" 
+              />
+              <path 
+                d="M0,4 H1000" 
+                stroke="#FF5500" 
+                strokeWidth="2" 
+                strokeDasharray="20, 40"
+                className="animate-[pulseLine_12s_linear_infinite]"
+              />
+            </svg>
+            <style jsx global>{`
+              @keyframes pulseLine {
+                0% { stroke-dashoffset: 0; }
+                100% { stroke-dashoffset: -300; }
+              }
+            `}</style>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 relative z-10">
+            {PROCESS_STEPS.map((step, idx) => {
+              const IconComp = step.icon;
+              
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  key={idx}
+                  className="flex flex-col items-center text-center group relative"
+                >
+                  {/* Visual Node */}
+                  <div className="w-16 h-16 rounded-full bg-white border border-industrial-border flex items-center justify-center relative z-10 mb-5 group-hover:border-industrial-orange transition-all duration-300 shadow-md group-hover:shadow-[0_0_20px_rgba(255,85,0,0.1)]">
+                    
+                    {/* Step counter tag */}
+                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-industrial-orange text-[9px] font-mono font-bold flex items-center justify-center text-white">
+                      0{idx + 1}
+                    </div>
+                    
+                    <IconComp className="w-6 h-6 text-industrial-orange group-hover:scale-110 transition-transform duration-300 relative z-10" />
                   </div>
-                  
-                  <IconComp className="w-6 h-6 text-industrial-orange group-hover:scale-110 transition-transform duration-300 relative z-10" />
-                </div>
 
-                {/* Vertical connecting line for mobile screens */}
-                {idx < PROCESS_STEPS.length - 1 && (
-                  <div className="w-[1.5px] h-10 bg-gradient-to-b from-industrial-orange to-industrial-border z-0 lg:hidden mb-4" />
-                )}
+                  {/* Vertical connecting line for mobile screens */}
+                  {idx < PROCESS_STEPS.length - 1 && (
+                    <div className="w-[1.5px] h-10 bg-gradient-to-b from-industrial-orange to-industrial-border z-0 lg:hidden mb-4" />
+                  )}
 
-                {/* Details */}
-                <div className="space-y-2">
-                  <h3 className="font-display font-bold text-sm text-industrial-text uppercase tracking-wider group-hover:text-industrial-orange transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-[11px] text-industrial-text-secondary leading-relaxed max-w-[180px] mx-auto">
-                    {step.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                  {/* Details */}
+                  <div className="space-y-2">
+                    <h3 className="font-display font-bold text-sm text-industrial-text uppercase tracking-wider group-hover:text-industrial-orange transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="text-[11px] text-industrial-text-secondary leading-relaxed max-w-[180px] mx-auto">
+                      {step.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
       </div>

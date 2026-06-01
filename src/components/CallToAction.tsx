@@ -125,7 +125,7 @@ export default function CallToAction() {
           transition={{ duration: 0.8 }}
           className="space-y-4"
         >
-          <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block">
+          <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block">
             Partner With Industry Leaders
           </span>
           
