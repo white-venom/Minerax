@@ -50,14 +50,14 @@ export default function Testimonials() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
-    }, 6000); // 6 seconds auto-slide
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="py-24 bg-industrial-black text-white relative overflow-hidden border-t border-industrial-steel-dark/60">
+    <section className="py-24 bg-white text-industrial-text relative overflow-hidden border-t border-industrial-border">
       {/* Background Grids */}
-      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
       <div className="absolute top-1/2 right-10 w-[500px] h-[500px] bg-industrial-orange/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -67,17 +67,17 @@ export default function Testimonials() {
           <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
             10 // Client Endorsements
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase mb-4">
-            Industrial <span className="text-industrial-steel-light">Partnerships</span>
+          <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-4">
+            Industrial <span className="text-industrial-steel-medium">Partnerships</span>
           </h2>
-          <p className="text-sm text-industrial-steel-light leading-relaxed">
+          <p className="text-sm text-industrial-text-secondary leading-relaxed">
             Leading engineering firms and transport conglomerates trust MineraX to deliver heavy castings for mission-critical parts.
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="max-w-4xl mx-auto relative min-h-[350px] flex flex-col justify-between bg-industrial-graphite border border-industrial-steel-dark rounded-2xl p-8 md:p-12 glass-panel shadow-2xl">
-          <div className="absolute top-6 right-8 opacity-[0.03] text-white">
+        <div className="max-w-4xl mx-auto relative min-h-[350px] flex flex-col justify-between bg-industrial-bg-alt border border-industrial-border rounded-2xl p-8 md:p-12 shadow-md">
+          <div className="absolute top-6 right-8 opacity-[0.04] text-industrial-text">
             <Quote className="w-40 h-40" />
           </div>
 
@@ -99,15 +99,15 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-base md:text-xl text-white font-medium leading-relaxed italic">
-                  "{TESTIMONIALS_DATA[activeIndex].quote}"
+                <p className="text-base md:text-xl text-industrial-text font-medium leading-relaxed italic">
+                  &ldquo;{TESTIMONIALS_DATA[activeIndex].quote}&rdquo;
                 </p>
 
-                <div className="border-t border-white/5 pt-4">
-                  <div className="font-display font-bold text-sm text-white uppercase tracking-wider">
+                <div className="border-t border-industrial-border pt-4">
+                  <div className="font-display font-bold text-sm text-industrial-text uppercase tracking-wider">
                     {TESTIMONIALS_DATA[activeIndex].author}
                   </div>
-                  <div className="font-mono text-[10px] text-industrial-steel-light uppercase mt-0.5">
+                  <div className="font-mono text-[10px] text-industrial-text-secondary uppercase mt-0.5">
                     {TESTIMONIALS_DATA[activeIndex].role} • <span className="text-industrial-orange font-semibold">{TESTIMONIALS_DATA[activeIndex].company}</span>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ export default function Testimonials() {
           </div>
 
           {/* Slider Indicators & Logos */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mt-12 border-t border-white/5 pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mt-12 border-t border-industrial-border pt-8">
             {/* Sliding buttons */}
             <div className="flex gap-2.5">
               {TESTIMONIALS_DATA.map((_, idx) => (
@@ -124,7 +124,7 @@ export default function Testimonials() {
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    activeIndex === idx ? "bg-industrial-orange w-8" : "bg-industrial-steel-medium/60"
+                    activeIndex === idx ? "bg-industrial-orange w-8" : "bg-industrial-text-muted/30"
                   }`}
                 />
               ))}
@@ -132,7 +132,7 @@ export default function Testimonials() {
 
             {/* Clients Logo Grid */}
             <div className="flex items-center gap-6 opacity-60">
-              <div className="flex items-center gap-2 font-mono text-xs text-industrial-steel-light font-bold">
+              <div className="flex items-center gap-2 font-mono text-xs text-industrial-text-secondary font-bold">
                 <Building2 className="w-4 h-4" />
                 {TESTIMONIALS_DATA[activeIndex].logoText}
               </div>

@@ -21,7 +21,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: Car,
     specText: "Alloy Steel / Nodular Iron Spec",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <circle cx="25" cy="55" r="10" />
         <circle cx="75" cy="55" r="10" />
         <path d="M10,50 L20,30 L65,30 L80,45 L90,50 L90,58 L85,58 M65,55 H35 M15,55 H10" />
@@ -37,7 +37,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: Train,
     specText: "EN 13674-1 Compliance",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <line x1="10" y1="60" x2="90" y2="60" strokeWidth="2" />
         <line x1="10" y1="68" x2="90" y2="68" strokeWidth="2" />
         {[20, 35, 50, 65, 80].map((x) => (
@@ -54,7 +54,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: Construction,
     specText: "AISC Steel Grade Standards",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <path d="M10,60 L50,15 L90,60" />
         <line x1="10" y1="60" x2="90" y2="60" />
         <line x1="30" y1="60" x2="30" y2="38" />
@@ -71,7 +71,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: Box,
     specText: "Heavy ISO Fatigue Standard",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <circle cx="35" cy="40" r="15" />
         <circle cx="65" cy="40" r="10" />
         <circle cx="35" cy="40" r="5" />
@@ -88,7 +88,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: Zap,
     specText: "Thermodynamic Stress Tolerant",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <line x1="50" y1="70" x2="50" y2="35" strokeWidth="2" />
         <circle cx="50" cy="35" r="4" />
         <path d="M50,35 L30,10 L32,8 Z" />
@@ -104,7 +104,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: Mountain,
     specText: "Abrasive Wear Resistant Alloy",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <path d="M10,65 L30,25 L50,55 L70,30 L90,65 Z" />
         <line x1="5" y1="65" x2="95" y2="65" />
         <rect x="25" y="20" width="10" height="6" strokeDasharray="1,1" />
@@ -118,7 +118,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: HardHat,
     specText: "High-Tensile Steel",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <rect x="15" y="55" width="25" height="15" />
         <line x1="30" y1="55" x2="50" y2="25" />
         <line x1="50" y1="25" x2="80" y2="25" />
@@ -134,7 +134,7 @@ const INDUSTRIES_DATA: IndustryItem[] = [
     icon: ShieldAlert,
     specText: "MIL-SPEC Metallurgy Standard",
     svgWireframe: (
-      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/10 group-hover:stroke-industrial-orange/30 transition-all fill-none stroke-[0.8] duration-500">
+      <svg viewBox="0 0 100 80" className="w-full h-full stroke-industrial-orange/15 group-hover:stroke-industrial-orange/40 transition-all fill-none stroke-[0.8] duration-500">
         <path d="M50,15 L80,25 C80,50 50,70 50,70 C50,70 20,50 20,25 Z" />
         <circle cx="50" cy="40" r="10" strokeDasharray="3,3" />
         <line x1="50" y1="25" x2="50" y2="55" />
@@ -147,24 +147,24 @@ export default function IndustriesServed() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section id="industries" className="py-24 bg-industrial-dark text-white relative overflow-hidden">
+    <section id="industries" className="py-24 bg-industrial-bg text-industrial-text relative overflow-hidden">
       {/* Background patterns */}
-      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 engineering-grid opacity-30 pointer-events-none" />
       <div className="absolute top-1/4 right-0 w-[450px] h-[450px] bg-industrial-orange/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-industrial-steel-dark/60 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-industrial-border pb-8">
           <div>
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
               05 // Sectors Supplied
             </span>
-            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase">
-              Industries <span className="text-industrial-steel-light">We Serve</span>
+            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase">
+              Industries <span className="text-industrial-steel-medium">We Serve</span>
             </h2>
           </div>
-          <p className="text-industrial-steel-light text-sm max-w-md mt-4 md:mt-0 leading-relaxed font-normal">
+          <p className="text-industrial-text-secondary text-sm max-w-md mt-4 md:mt-0 leading-relaxed font-normal">
             Delivering mission-critical metal casting parts engineered specifically for heavy industrial applications globally.
           </p>
         </div>
@@ -180,7 +180,7 @@ export default function IndustriesServed() {
                 key={ind.id}
                 onMouseEnter={() => setHoveredId(ind.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="bg-industrial-graphite/40 border border-industrial-steel-dark hover:border-industrial-orange/30 rounded-xl p-6 relative overflow-hidden group min-h-[250px] flex flex-col justify-between transition-all duration-300"
+                className="bg-white border border-industrial-border hover:border-industrial-orange/30 rounded-xl p-6 relative overflow-hidden group min-h-[250px] flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 {/* Background Wireframe schematic */}
                 <div className="absolute bottom-2 right-2 w-32 h-24 pointer-events-none">
@@ -189,17 +189,16 @@ export default function IndustriesServed() {
 
                 {/* Content Overlay */}
                 <div className="relative z-10 space-y-3 text-left">
-                  <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange group-hover:border-industrial-orange/40 transition-colors">
+                  <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange group-hover:border-industrial-orange/40 transition-colors">
                     <IconComp className="w-5 h-5" />
                   </div>
                   
-                  <h3 className="font-display font-bold text-lg text-white uppercase tracking-wider group-hover:text-industrial-orange transition-colors">
+                  <h3 className="font-display font-bold text-lg text-industrial-text uppercase tracking-wider group-hover:text-industrial-orange transition-colors">
                     {ind.name}
                   </h3>
                 </div>
 
                 <div className="relative z-10 mt-6">
-                  {/* Custom animated expansion on hover */}
                   <div className="h-16 relative overflow-hidden">
                     <AnimatePresence initial={false}>
                       {!isHovered ? (
@@ -209,9 +208,9 @@ export default function IndustriesServed() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute bottom-0 left-0 font-mono text-[10px] text-industrial-steel-light uppercase"
+                          className="absolute bottom-0 left-0 font-mono text-[10px] text-industrial-text-secondary uppercase"
                         >
-                          <span className="text-white/40 block">Design Spec:</span>
+                          <span className="text-industrial-text-muted block">Design Spec:</span>
                           {ind.specText}
                         </motion.div>
                       ) : (
@@ -221,7 +220,7 @@ export default function IndustriesServed() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 15 }}
                           transition={{ duration: 0.3 }}
-                          className="absolute top-0 left-0 text-[11px] text-industrial-steel-light leading-normal"
+                          className="absolute top-0 left-0 text-[11px] text-industrial-text-secondary leading-normal"
                         >
                           {ind.desc}
                         </motion.p>
@@ -231,7 +230,7 @@ export default function IndustriesServed() {
                 </div>
                 
                 {/* Corner details */}
-                <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-industrial-steel-medium group-hover:bg-industrial-orange transition-colors" />
+                <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-industrial-text-muted group-hover:bg-industrial-orange transition-colors" />
               </div>
             );
           })}

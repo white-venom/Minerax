@@ -14,9 +14,9 @@ export default function IndustriesPage() {
       <CustomCursor />
       <Header />
 
-      <main className="relative z-20 min-h-screen bg-industrial-dark text-white pt-32">
+      <main className="relative z-20 min-h-screen bg-industrial-bg text-industrial-text pt-32">
         {/* Fine Engineering Grid */}
-        <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
 
         {/* Page Header */}
         <div className="container mx-auto px-6 py-12 relative z-10">
@@ -29,10 +29,10 @@ export default function IndustriesPage() {
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block">
               MineraX Sectors Served
             </span>
-            <h1 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-white">
-              Heavy Industrial <span className="text-industrial-steel-light">Applications</span>
+            <h1 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-industrial-text">
+              Heavy Industrial <span className="text-industrial-steel-medium">Applications</span>
             </h1>
-            <p className="text-sm md:text-base text-industrial-steel-light leading-relaxed">
+            <p className="text-sm md:text-base text-industrial-text-secondary leading-relaxed">
               We design and cast custom critical parts satisfying rigorous regulatory standards for global infrastructure, maritime shipping, transit networks, and renewable power.
             </p>
           </motion.div>
@@ -42,33 +42,33 @@ export default function IndustriesPage() {
         <IndustriesServed />
 
         {/* Structural indicators */}
-        <section className="py-16 bg-industrial-black/40 border-t border-industrial-steel-dark/60">
+        <section className="py-16 bg-white border-t border-industrial-border">
           <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex gap-4 items-start text-left">
-              <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange flex-shrink-0">
+              <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange flex-shrink-0">
                 <Train className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm uppercase text-white tracking-wider">Railways & Transit</h4>
-                <p className="text-xs text-industrial-steel-light mt-1">Casting heavy locomotive bogies, couplers, and wheel hubs with 100% micro-integrity tracking.</p>
+                <h4 className="font-display font-bold text-sm uppercase text-industrial-text tracking-wider">Railways & Transit</h4>
+                <p className="text-xs text-industrial-text-secondary mt-1">Casting heavy locomotive bogies, couplers, and wheel hubs with 100% micro-integrity tracking.</p>
               </div>
             </div>
             <div className="flex gap-4 items-start text-left">
-              <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange flex-shrink-0">
+              <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange flex-shrink-0">
                 <Anchor className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm uppercase text-white tracking-wider">Maritime Engineering</h4>
-                <p className="text-xs text-industrial-steel-light mt-1">Supplying marine propeller shaft sleeves, rudder horns, and custom wear bushings in bronze-nickel alloys.</p>
+                <h4 className="font-display font-bold text-sm uppercase text-industrial-text tracking-wider">Maritime Engineering</h4>
+                <p className="text-xs text-industrial-text-secondary mt-1">Supplying marine propeller shaft sleeves, rudder horns, and custom wear bushings in bronze-nickel alloys.</p>
               </div>
             </div>
             <div className="flex gap-4 items-start text-left">
-              <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange flex-shrink-0">
+              <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange flex-shrink-0">
                 <HardHat className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm uppercase text-white tracking-wider">Mining & Earthmoving</h4>
-                <p className="text-xs text-industrial-steel-light mt-1">Ductile spheroidal iron castings for massive excavator dragline links, rock crushers, and chassis booms.</p>
+                <h4 className="font-display font-bold text-sm uppercase text-industrial-text tracking-wider">Mining & Earthmoving</h4>
+                <p className="text-xs text-industrial-text-secondary mt-1">Ductile spheroidal iron castings for massive excavator dragline links, rock crushers, and chassis booms.</p>
               </div>
             </div>
           </div>

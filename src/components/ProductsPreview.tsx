@@ -27,7 +27,7 @@ const PRODUCTS_DATA: ProductItem[] = [
       { name: "Squeeze Pressure", value: "1.2 MPa" },
     ],
     svgBlueprint: (
-      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
         <rect x="40" y="30" width="120" height="90" rx="4" strokeDasharray="3,3" />
         <line x1="100" y1="20" x2="100" y2="130" strokeWidth="1" />
         <circle cx="100" cy="75" r="30" />
@@ -49,12 +49,11 @@ const PRODUCTS_DATA: ProductItem[] = [
       { name: "Max Temperature", value: "1,750 °C" },
     ],
     svgBlueprint: (
-      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
         <circle cx="100" cy="75" r="45" />
         <circle cx="100" cy="75" r="38" strokeDasharray="4,2" />
         <path d="M70,75 L130,75" strokeWidth="3" />
         <path d="M100,45 L100,105" strokeWidth="3" />
-        {/* Heat coil lines */}
         <line x1="45" y1="75" x2="35" y2="75" />
         <line x1="155" y1="75" x2="165" y2="75" />
       </svg>
@@ -72,7 +71,7 @@ const PRODUCTS_DATA: ProductItem[] = [
       { name: "Cooling Path", value: "120 meters loop" },
     ],
     svgBlueprint: (
-      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
         <path d="M20,75 C20,30 180,30 180,75 C180,120 20,120 20,75 Z" strokeDasharray="5,3" />
         <circle cx="50" cy="75" r="10" fill="rgba(255,85,0,0.1)" />
         <circle cx="100" cy="75" r="10" fill="rgba(255,85,0,0.1)" />
@@ -93,7 +92,7 @@ const PRODUCTS_DATA: ProductItem[] = [
       { name: "Reclamation Rate", value: "94.5% Sand Reuse" },
     ],
     svgBlueprint: (
-      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
         <polygon points="100,20 150,110 50,110" />
         <circle cx="100" cy="75" r="20" strokeDasharray="3,3" />
         <line x1="100" y1="20" x2="100" y2="110" />
@@ -113,9 +112,8 @@ const PRODUCTS_DATA: ProductItem[] = [
       { name: "Magnet Lift", value: "15 Tons Capacity" },
     ],
     svgBlueprint: (
-      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <svg viewBox="0 0 200 150" className="w-full h-full stroke-industrial-orange fill-none stroke-[1.5] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
         <line x1="20" y1="110" x2="180" y2="110" strokeWidth="2" />
-        {/* Conveyor rollers */}
         {[30, 60, 90, 120, 150, 170].map((cx, i) => (
           <circle key={i} cx={cx} cy="118" r="5" />
         ))}
@@ -128,24 +126,24 @@ const PRODUCTS_DATA: ProductItem[] = [
 
 export default function ProductsPreview() {
   return (
-    <section id="products" className="py-24 bg-industrial-black text-white relative overflow-hidden">
+    <section id="products" className="py-24 bg-industrial-bg-alt text-industrial-text relative overflow-hidden">
       {/* Background Grids */}
-      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 engineering-grid opacity-30 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-industrial-orange/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-industrial-steel-dark/60 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-industrial-border pb-8">
           <div>
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
               04 // Foundry Products
             </span>
-            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase">
-              Production <span className="text-industrial-steel-light">Machinery</span>
+            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase">
+              Production <span className="text-industrial-steel-medium">Machinery</span>
             </h2>
           </div>
-          <p className="text-industrial-steel-light text-sm max-w-md mt-4 md:mt-0 leading-relaxed font-normal">
+          <p className="text-industrial-text-secondary text-sm max-w-md mt-4 md:mt-0 leading-relaxed font-normal">
             MineraX builds world-class foundry machinery and auxiliaries engineered for high output consistency and thermodynamic efficiency.
           </p>
         </div>
@@ -159,15 +157,15 @@ export default function ProductsPreview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="glass-panel border border-industrial-steel-dark hover:border-industrial-orange/40 rounded-xl p-6 md:p-8 flex flex-col lg:flex-row gap-8 items-center justify-between transition-all duration-300 relative group overflow-hidden"
+              className="bg-white border border-industrial-border hover:border-industrial-orange/40 chamfer-card industrial-corners p-6 md:p-8 flex flex-col lg:flex-row gap-8 items-center justify-between transition-all duration-300 relative group overflow-hidden shadow-sm hover:shadow-md"
             >
               {/* Subtle hover grid reveal */}
               <div className="absolute inset-0 engineering-grid opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300 pointer-events-none" />
 
               {/* Left Column: Blueprint Schematic representation */}
-              <div className="w-full lg:w-[280px] h-[180px] bg-industrial-graphite/60 border border-industrial-steel-dark/80 rounded-lg flex items-center justify-center relative overflow-hidden flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-300">
-                <div className="absolute inset-0 engineering-grid-fine opacity-20" />
-                <div className="absolute top-2 left-2 text-[8px] font-mono text-industrial-steel-light uppercase">
+              <div className="w-full lg:w-[280px] h-[180px] bg-industrial-bg-alt border border-industrial-border chamfer-card-sm flex items-center justify-center relative overflow-hidden flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-300">
+                <div className="absolute inset-0 engineering-grid-fine opacity-40" />
+                <div className="absolute top-2 left-2 text-[8px] font-mono text-industrial-text-muted uppercase">
                   Cad Model Spec // {product.id.toUpperCase()}_REV2
                 </div>
                 <div className="w-[180px] h-[130px]">
@@ -178,33 +176,33 @@ export default function ProductsPreview() {
               {/* Middle Column: Details */}
               <div className="flex-grow space-y-4 text-left">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange group-hover:border-industrial-orange/30 transition-colors">
+                  <div className="w-9 h-9 chamfer-card-sm bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange group-hover:border-industrial-orange/30 transition-colors">
                     <product.icon className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase block">
                       {product.tagline}
                     </span>
-                    <h3 className="font-display font-bold text-xl md:text-2xl text-white uppercase tracking-tight">
+                    <h3 className="font-display font-bold text-xl md:text-2xl text-industrial-text uppercase tracking-tight">
                       {product.name}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-xs md:text-sm text-industrial-steel-light leading-relaxed max-w-xl">
+                <p className="text-xs md:text-sm text-industrial-text-secondary leading-relaxed max-w-xl">
                   {product.desc}
                 </p>
               </div>
 
               {/* Right Column: Specifications & Button */}
-              <div className="w-full lg:w-[320px] flex flex-col md:flex-row lg:flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-industrial-steel-dark/60 pt-6 lg:pt-0 lg:pl-8 flex-shrink-0">
+              <div className="w-full lg:w-[320px] flex flex-col md:flex-row lg:flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-industrial-border pt-6 lg:pt-0 lg:pl-8 flex-shrink-0">
                 <div className="space-y-3 flex-grow">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 block">Operational Specifications</span>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-industrial-text-muted block">Operational Specifications</span>
                   <div className="space-y-1.5 text-xs font-mono">
                     {product.specs.map((spec, sIdx) => (
-                      <div key={sIdx} className="flex justify-between border-b border-white/5 py-1">
-                        <span className="text-industrial-steel-light">{spec.name}</span>
-                        <span className="text-white font-semibold">{spec.value}</span>
+                      <div key={sIdx} className="flex justify-between border-b border-industrial-border-light py-1">
+                        <span className="text-industrial-text-secondary">{spec.name}</span>
+                        <span className="text-industrial-text font-semibold">{spec.value}</span>
                       </div>
                     ))}
                   </div>
@@ -214,7 +212,7 @@ export default function ProductsPreview() {
                   <MagneticButton>
                     <a 
                       href="#contact" 
-                      className="inline-flex items-center gap-2 px-5 py-3 bg-industrial-graphite border border-industrial-steel-medium hover:border-industrial-orange hover:text-industrial-orange text-white text-xs font-mono uppercase font-semibold transition-all rounded"
+                      className="inline-flex items-center gap-2 px-5 py-3 industrial-plate-btn-secondary text-xs font-mono rounded-none"
                     >
                       REQUEST SPECS
                       <ArrowRight className="w-3.5 h-3.5" />

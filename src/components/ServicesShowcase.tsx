@@ -59,7 +59,6 @@ function ServiceCard({ index, title, desc, tagline, icon: Icon, specifications }
     const { left, top } = cardRef.current.getBoundingClientRect();
     const x = e.clientX - left;
     const y = e.clientY - top;
-    // Set custom CSS variables for the radial hover gradient
     cardRef.current.style.setProperty("--mouse-x", `${x}px`);
     cardRef.current.style.setProperty("--mouse-y", `${y}px`);
   };
@@ -72,22 +71,21 @@ function ServiceCard({ index, title, desc, tagline, icon: Icon, specifications }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="radial-hover-card glass-panel group p-8 rounded-xl border border-industrial-steel-dark relative overflow-hidden transition-all duration-300 hover:border-industrial-orange/40 hover:-translate-y-1.5 flex flex-col justify-between min-h-[420px]"
+      className="radial-hover-card chamfer-card industrial-corners bg-white group p-8 border border-industrial-border relative overflow-hidden transition-all duration-300 hover:border-industrial-orange/40 hover:-translate-y-1.5 hover:shadow-lg flex flex-col justify-between min-h-[420px]"
     >
       {/* Background Subtle mesh */}
       <div className="absolute inset-0 engineering-grid opacity-[0.03] pointer-events-none" />
       
       {/* Glow highlight top border */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-industrial-orange/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-industrial-orange/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
       {/* Top Header */}
       <div>
         <div className="flex justify-between items-start mb-6">
-          <div className="w-14 h-14 bg-industrial-graphite border border-industrial-steel-medium/40 rounded-lg flex items-center justify-center relative shadow-inner group-hover:border-industrial-orange/50 transition-colors duration-300">
-            <div className="absolute inset-0.5 rounded bg-industrial-black opacity-40" />
+          <div className="w-14 h-14 bg-industrial-orange-light border border-industrial-orange/20 chamfer-card-sm flex items-center justify-center relative shadow-sm group-hover:border-industrial-orange/50 transition-colors duration-300">
             <Icon className="w-6 h-6 text-industrial-orange relative z-10 group-hover:scale-110 transition-transform duration-300" />
           </div>
-          <span className="font-mono text-xs text-industrial-steel-medium/80 font-bold group-hover:text-industrial-orange transition-colors">
+          <span className="font-mono text-xs text-industrial-text-muted font-bold group-hover:text-industrial-orange transition-colors">
             0{index + 1}
           </span>
         </div>
@@ -95,17 +93,17 @@ function ServiceCard({ index, title, desc, tagline, icon: Icon, specifications }
         <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase block mb-1">
           {tagline}
         </span>
-        <h3 className="font-display font-extrabold text-xl md:text-2xl text-white tracking-tight uppercase mb-4">
+        <h3 className="font-display font-extrabold text-xl md:text-2xl text-industrial-text tracking-tight uppercase mb-4">
           {title}
         </h3>
-        <p className="text-xs text-industrial-steel-light leading-relaxed mb-6">
+        <p className="text-xs text-industrial-text-secondary leading-relaxed mb-6">
           {desc}
         </p>
       </div>
 
       {/* Specs list and action link */}
       <div className="space-y-6">
-        <ul className="space-y-2 border-t border-industrial-steel-dark/50 pt-4 font-mono text-[10px] text-industrial-steel-light">
+        <ul className="space-y-2 border-t border-industrial-border pt-4 font-mono text-[10px] text-industrial-text-secondary">
           {specifications.map((spec, sIdx) => (
             <li key={sIdx} className="flex items-center gap-2">
               <span className="w-1 h-1 bg-industrial-orange rounded-full" />
@@ -114,7 +112,7 @@ function ServiceCard({ index, title, desc, tagline, icon: Icon, specifications }
           ))}
         </ul>
 
-        <div className="flex items-center gap-2 text-xs font-mono font-semibold text-industrial-orange group-hover:text-white transition-colors duration-300">
+        <div className="flex items-center gap-2 text-xs font-mono font-semibold text-industrial-orange group-hover:text-industrial-orange-dark transition-colors duration-300">
           LEARN SYSTEMS
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
         </div>
@@ -125,24 +123,24 @@ function ServiceCard({ index, title, desc, tagline, icon: Icon, specifications }
 
 export default function ServicesShowcase() {
   return (
-    <section id="capabilities" className="py-24 bg-industrial-black text-white relative overflow-hidden">
+    <section id="capabilities" className="py-24 bg-industrial-bg text-industrial-text relative overflow-hidden">
       {/* Background graphic elements */}
-      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 engineering-grid opacity-30 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-industrial-orange/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-industrial-steel-dark/60 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-industrial-border pb-8">
           <div>
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
               02 // Capabilities
             </span>
-            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase">
-              Operational <span className="text-industrial-steel-light">Foundry Systems</span>
+            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase">
+              Operational <span className="text-industrial-steel-medium">Foundry Systems</span>
             </h2>
           </div>
-          <p className="text-industrial-steel-light text-sm max-w-md mt-4 md:mt-0 leading-relaxed font-normal">
+          <p className="text-industrial-text-secondary text-sm max-w-md mt-4 md:mt-0 leading-relaxed font-normal">
             Precision engineering solutions built to withstand extreme environments and maintain strict structural integrity specs.
           </p>
         </div>

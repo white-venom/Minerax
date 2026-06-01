@@ -50,20 +50,20 @@ function FeatureCard({ index, title, desc, icon: Icon }: FeatureCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="p-6 bg-industrial-graphite/40 border border-industrial-steel-dark rounded-lg flex gap-4 hover:border-industrial-orange/30 transition-colors duration-300 relative group overflow-hidden"
+      className="p-6 bg-white border border-industrial-border chamfer-card-sm flex gap-4 hover:border-industrial-orange/30 transition-colors duration-300 relative group overflow-hidden shadow-sm"
     >
       {/* Corner mechanical detail */}
       <div className="absolute top-0 right-0 w-8 h-8 bg-industrial-orange/5 rotate-45 translate-x-4 -translate-y-4 group-hover:bg-industrial-orange/10 transition-colors" />
       
-      <div className="w-12 h-12 rounded bg-industrial-graphite border border-industrial-steel-medium/30 flex items-center justify-center flex-shrink-0 group-hover:border-industrial-orange/40 transition-colors">
+      <div className="w-12 h-12 chamfer-card-sm bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center flex-shrink-0 group-hover:border-industrial-orange/40 transition-colors">
         <Icon className="w-5 h-5 text-industrial-orange group-hover:scale-110 transition-transform duration-300" />
       </div>
 
       <div className="space-y-1.5">
-        <h3 className="font-display font-bold text-base text-white uppercase tracking-wider group-hover:text-industrial-orange transition-colors">
+        <h3 className="font-display font-bold text-base text-industrial-text uppercase tracking-wider group-hover:text-industrial-orange transition-colors">
           {title}
         </h3>
-        <p className="text-xs text-industrial-steel-light leading-relaxed">
+        <p className="text-xs text-industrial-text-secondary leading-relaxed">
           {desc}
         </p>
       </div>
@@ -73,10 +73,10 @@ function FeatureCard({ index, title, desc, icon: Icon }: FeatureCardProps) {
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-industrial-dark text-white relative overflow-hidden">
+    <section className="py-24 bg-industrial-bg text-industrial-text relative overflow-hidden">
       {/* Schematic Background */}
-      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
-      <div className="absolute top-10 left-10 w-44 h-44 rounded-full border border-white/5 border-dashed animate-spin pointer-events-none [animation-duration:20s]" />
+      <div className="absolute inset-0 engineering-grid opacity-30 pointer-events-none" />
+      <div className="absolute top-10 left-10 w-44 h-44 rounded-full border border-industrial-border border-dashed animate-spin pointer-events-none [animation-duration:20s]" />
       <div className="absolute bottom-1/4 right-5 w-[500px] h-[500px] bg-industrial-orange/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -86,10 +86,10 @@ export default function WhyChooseUs() {
           <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
             03 // Operational Quality
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase mb-4">
-            Why Partner With <span className="text-industrial-steel-light">MineraX</span>
+          <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-4">
+            Why Partner With <span className="text-industrial-steel-medium">MineraX</span>
           </h2>
-          <p className="text-sm text-industrial-steel-light leading-relaxed">
+          <p className="text-sm text-industrial-text-secondary leading-relaxed">
             Delivering the perfect synergy of metallurgical expertise, state-of-the-art foundry machinery, and absolute quality commitment.
           </p>
         </div>

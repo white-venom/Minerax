@@ -10,20 +10,31 @@ const config: Config = {
     extend: {
       colors: {
         industrial: {
-          black: "#0B0B0C",
-          dark: "#121214",
-          graphite: "#1C1C1F",
-          steel: {
-            dark: "#2A2A2E",
-            medium: "#3E3E42",
-            light: "#8E8E93",
-          },
+          // Backgrounds (light)
+          bg: "#FAFAFA",
+          "bg-alt": "#F3F4F6",
+          "bg-card": "#FFFFFF",
+          // Text (dark — matches logo)
+          text: "#1A1A1A",
+          "text-secondary": "#4B5563",
+          "text-muted": "#9CA3AF",
+          // Borders
+          border: "#E5E7EB",
+          "border-light": "#F3F4F6",
+          // Accent (orange)
           orange: {
             DEFAULT: "#FF5500",
             glow: "#FF6B00",
             dark: "#CC4400",
-          }
-        }
+            light: "#FFF0EB",
+          },
+          // Steel / neutral tones
+          steel: {
+            dark: "#374151",
+            medium: "#6B7280",
+            light: "#9CA3AF",
+          },
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
@@ -46,8 +57,8 @@ const config: Config = {
           "0%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
-        }
-      }
+        },
+      },
     },
   },
   plugins: [],

@@ -9,9 +9,8 @@ import CompanyIntro from "@/components/CompanyIntro";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ProductsPreview from "@/components/ProductsPreview";
-import IndustriesServed from "@/components/IndustriesServed";
 import ManufacturingExcellence from "@/components/ManufacturingExcellence";
-import VirtualFactory from "@/components/VirtualFactory";
+
 import FeaturedProjects from "@/components/FeaturedProjects";
 import QualityCertifications from "@/components/QualityCertifications";
 import Testimonials from "@/components/Testimonials";
@@ -69,14 +68,10 @@ export default function Home() {
         {/* 5. Products Preview Section */}
         <ProductsPreview />
 
-        {/* 6. Industries We Serve */}
-        <IndustriesServed />
-
         {/* 7. Manufacturing Excellence Section */}
         <ManufacturingExcellence />
 
-        {/* 8. Virtual Factory Experience */}
-        <VirtualFactory />
+
 
         {/* 9. Featured Projects */}
         <FeaturedProjects />

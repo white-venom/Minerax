@@ -12,7 +12,6 @@ const NAV_ITEMS = [
   { label: "Capabilities", href: "/capabilities" },
   { label: "Industries Served", href: "/industries" },
   { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {
@@ -35,8 +34,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
         scrolled
-          ? "bg-industrial-black/85 backdrop-blur-md py-4 border-industrial-steel-dark"
-          : "bg-transparent py-6 border-transparent"
+          ? "bg-white/90 backdrop-blur-md py-4 border-industrial-border shadow-sm"
+          : "bg-white/40 backdrop-blur-sm py-5 border-industrial-border/40"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -52,7 +51,7 @@ export default function Header() {
             <Link
               key={item.label}
               href={item.href}
-              className="font-mono text-xs text-industrial-steel-light hover:text-white uppercase tracking-wider transition-colors duration-200"
+              className="font-mono text-xs text-industrial-steel-medium hover:text-industrial-orange uppercase tracking-wider transition-colors duration-200"
             >
               {item.label}
             </Link>
@@ -64,7 +63,7 @@ export default function Header() {
           <MagneticButton>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-industrial-orange hover:bg-industrial-orange-glow text-white text-xs font-mono uppercase font-semibold transition-colors rounded shadow-[0_2px_10px_rgba(255,85,0,0.2)]"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 industrial-plate-btn text-xs font-mono rounded-none"
             >
               Get a Quote
               <ArrowRight className="w-3.5 h-3.5" />
@@ -75,7 +74,7 @@ export default function Header() {
         {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden w-10 h-10 border border-industrial-steel-medium/30 flex items-center justify-center text-white rounded hover:border-industrial-orange transition-colors"
+          className="lg:hidden w-10 h-10 border border-industrial-border flex items-center justify-center text-industrial-text rounded hover:border-industrial-orange transition-colors"
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -84,14 +83,14 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="lg:hidden absolute top-[100%] left-0 w-full bg-industrial-black/95 border-b border-industrial-steel-dark py-6 px-6 shadow-2xl flex flex-col gap-5 text-left transition-all">
+        <div className="lg:hidden absolute top-[100%] left-0 w-full bg-white/95 backdrop-blur-md border-b border-industrial-border py-6 px-6 shadow-lg flex flex-col gap-5 text-left transition-all">
           <nav className="flex flex-col gap-4">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="font-mono text-sm text-industrial-steel-light hover:text-white uppercase tracking-wider transition-colors"
+                className="font-mono text-sm text-industrial-steel-medium hover:text-industrial-orange uppercase tracking-wider transition-colors"
               >
                 {item.label}
               </Link>
@@ -101,7 +100,7 @@ export default function Header() {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="w-full py-3 bg-industrial-orange hover:bg-industrial-orange-glow text-white text-xs font-mono uppercase font-semibold text-center rounded transition-colors"
+            className="w-full py-3 industrial-plate-btn text-xs font-mono text-center rounded-none block"
           >
             Get a Quote
           </Link>

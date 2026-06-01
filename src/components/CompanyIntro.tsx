@@ -43,9 +43,9 @@ const SPECIALIZATION_TAGS = [
 
 export default function CompanyIntro() {
   return (
-    <section id="about" className="py-24 bg-industrial-dark text-white relative overflow-hidden">
+    <section id="about" className="py-24 bg-industrial-bg-alt text-industrial-text relative overflow-hidden">
       {/* Background grids */}
-      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 engineering-grid opacity-30 pointer-events-none" />
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-industrial-orange/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -57,25 +57,25 @@ export default function CompanyIntro() {
               <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
                 01 // Introduction
               </span>
-              <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase mb-6">
+              <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-6">
                 Shaping the Future of <br />
-                <span className="text-industrial-steel-light font-black">Industrial Metallurgy</span>
+                <span className="text-industrial-steel-medium font-black">Industrial Metallurgy</span>
               </h2>
-              <p className="text-industrial-steel-light text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-industrial-text-secondary text-base md:text-lg leading-relaxed mb-6">
                 MineraX Industries is an engineering-first manufacturing powerhouse specializing in turnkey foundry project executions, melting furnaces, and custom heavy steel-molding lines. We integrate robust traditional metallurgy with advanced IoT-driven robotics to output high-tolerance casting products.
               </p>
             </div>
 
             {/* Specialization Tags */}
             <div className="space-y-4">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-white/50 mb-2">Core Engineering Disciplines</h3>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-industrial-text-muted mb-2">Core Engineering Disciplines</h3>
               <div className="flex flex-wrap gap-3">
                 {SPECIALIZATION_TAGS.map((spec, index) => {
                   const IconComp = spec.icon;
                   return (
                     <div 
                       key={index}
-                      className="flex items-center gap-2 px-3 py-2 bg-industrial-graphite border border-industrial-steel-dark rounded text-xs font-mono text-white/90 hover:border-industrial-orange/40 hover:bg-industrial-graphite/80 transition-all duration-300"
+                      className="flex items-center gap-2 px-3 py-2 bg-white border border-industrial-border rounded text-xs font-mono text-industrial-text hover:border-industrial-orange/40 transition-all duration-300 shadow-sm"
                     >
                       <IconComp className="w-3.5 h-3.5 text-industrial-orange" />
                       {spec.text}
@@ -86,10 +86,10 @@ export default function CompanyIntro() {
             </div>
 
             {/* Animated Timeline */}
-            <div className="pt-6 border-t border-industrial-steel-dark/60">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-white/50 mb-6">Evolutionary Roadmap</h3>
+            <div className="pt-6 border-t border-industrial-border">
+              <h3 className="font-mono text-xs uppercase tracking-widest text-industrial-text-muted mb-6">Evolutionary Roadmap</h3>
               
-              <div className="relative pl-6 border-l border-industrial-steel-dark/80 space-y-8">
+              <div className="relative pl-6 border-l border-industrial-border space-y-8">
                 {TIMELINE_EVENTS.map((evt, idx) => (
                   <motion.div 
                     initial={{ opacity: 0, x: -10 }}
@@ -100,18 +100,18 @@ export default function CompanyIntro() {
                     className="relative"
                   >
                     {/* Ring indicator on left vertical line */}
-                    <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-industrial-graphite border-2 border-industrial-orange ring-4 ring-industrial-dark" />
+                    <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-2 border-industrial-orange ring-4 ring-industrial-bg-alt" />
                     
                     <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-1">
                       <span className="font-display font-extrabold text-industrial-orange text-lg font-mono">
                         {evt.year}
                       </span>
-                      <h4 className="font-display font-semibold text-white text-sm">
+                      <h4 className="font-display font-semibold text-industrial-text text-sm">
                         {evt.title}
                       </h4>
                     </div>
                     
-                    <p className="text-xs text-industrial-steel-light leading-relaxed">
+                    <p className="text-xs text-industrial-text-secondary leading-relaxed">
                       {evt.description}
                     </p>
                   </motion.div>
@@ -126,24 +126,24 @@ export default function CompanyIntro() {
               <ThreeCasting />
               
               {/* Technical Specifications Blueprint Overlay */}
-              <div className="bg-industrial-graphite border border-industrial-steel-dark/80 rounded-xl p-6 glass-panel font-mono text-[11px] text-industrial-steel-light relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-20 h-20 engineering-grid opacity-10" />
+              <div className="bg-white border border-industrial-border rounded-xl p-6 glass-panel font-mono text-[11px] text-industrial-text-secondary relative overflow-hidden shadow-sm">
+                <div className="absolute top-0 right-0 w-20 h-20 engineering-grid opacity-30" />
                 <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                   <div>
-                    <span className="text-white/40 block uppercase">Product Line</span>
-                    <span className="text-white font-semibold">MINERAX-HEAVY-CAST</span>
+                    <span className="text-industrial-text-muted block uppercase">Product Line</span>
+                    <span className="text-industrial-text font-semibold">MINERAX-HEAVY-CAST</span>
                   </div>
                   <div>
-                    <span className="text-white/40 block uppercase">Standard Grade</span>
-                    <span className="text-white font-semibold">ASTM A216 WCB Steel</span>
+                    <span className="text-industrial-text-muted block uppercase">Standard Grade</span>
+                    <span className="text-industrial-text font-semibold">ASTM A216 WCB Steel</span>
                   </div>
                   <div>
-                    <span className="text-white/40 block uppercase">Smelting Temp</span>
-                    <span className="text-white font-semibold">1680°C Max</span>
+                    <span className="text-industrial-text-muted block uppercase">Smelting Temp</span>
+                    <span className="text-industrial-text font-semibold">1680°C Max</span>
                   </div>
                   <div>
-                    <span className="text-white/40 block uppercase">Tolerance Spec</span>
-                    <span className="text-white font-semibold">ISO 8062 SF03</span>
+                    <span className="text-industrial-text-muted block uppercase">Tolerance Spec</span>
+                    <span className="text-industrial-text font-semibold">ISO 8062 SF03</span>
                   </div>
                 </div>
               </div>

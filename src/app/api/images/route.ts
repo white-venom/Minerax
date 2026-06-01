@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 
 const IMAGE_PATHS = {
-  furnace: "/home/kartik/.gemini/antigravity/brain/b5e23090-a24b-4b95-b710-f0f91f359c22/smelting_furnace_molten_steel_1780102010348.png",
-  robotic: "/home/kartik/.gemini/antigravity/brain/b5e23090-a24b-4b95-b710-f0f91f359c22/robotic_casting_foundry_1780102033567.png",
-  heavy: "/home/kartik/.gemini/antigravity/brain/b5e23090-a24b-4b95-b710-f0f91f359c22/heavy_engineering_cast_steel_1780102052670.png"
+  furnace: "./public/furnace.png",
+  robotic: "./public/robotic.png",
+  heavy: "./public/heavy.png"
 };
 
 export async function GET(request: NextRequest) {

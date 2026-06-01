@@ -45,12 +45,12 @@ function StatCounter({ value, suffix, label }: StatItemProps) {
   }, [isVisible, value]);
 
   return (
-    <div ref={ref} className="text-center border-l border-white/10 pl-5 py-1">
-      <div className="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight flex items-baseline justify-center">
+    <div ref={ref} className="text-center border-l border-industrial-border pl-5 py-1">
+      <div className="font-display font-extrabold text-3xl md:text-4xl text-industrial-text tracking-tight flex items-baseline justify-center">
         <span>{count}</span>
         <span className="text-industrial-orange ml-0.5 text-2xl">{suffix}</span>
       </div>
-      <div className="text-white/40 font-mono text-[10px] uppercase tracking-widest mt-1">
+      <div className="text-industrial-text-muted font-mono text-[10px] uppercase tracking-widest mt-1">
         {label}
       </div>
     </div>
@@ -59,17 +59,47 @@ function StatCounter({ value, suffix, label }: StatItemProps) {
 
 const SLIDES = [
   {
-    src: "/api/images?id=furnace",
+    src: "/furnace.png",
     caption: "Precision Melting & Pouring",
+    title: "Induction Melting Systems",
+    description: "High-capacity induction furnaces engineered for optimal thermodynamic efficiency, alloy consistency, and automated temperature regulation.",
+    cta: "View Foundry Systems"
   },
   {
-    src: "/api/images?id=robotic",
+    src: "/robotic.png",
     caption: "Automated Foundry Lines",
+    title: "Robotic Sand Molding",
+    description: "Advanced green sand and no-bake molding lines integrated with automated core setting and automated cooling tracks.",
+    cta: "Explore Automation"
   },
   {
-    src: "/api/images?id=heavy",
+    src: "/heavy.png",
     caption: "Heavy Engineering Castings",
+    title: "Heavy Casting Solutions",
+    description: "Specialized manufacture of heavy-duty components including turbine housings, railway bogie frames, and massive gear blanks.",
+    cta: "See Cast Products"
   },
+];
+
+const ANIMATIONS = [
+  {
+    initial: { opacity: 0, scale: 0.9, rotate: -2 },
+    animate: { opacity: 1, scale: 1, rotate: 0 },
+    exit: { opacity: 0, scale: 1.1, rotate: 2 },
+    transition: { duration: 0.7, ease: "easeOut" }
+  },
+  {
+    initial: { opacity: 0, x: 200 },
+    animate: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -200 },
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+  },
+  {
+    initial: { opacity: 0, y: 150 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -150 },
+    transition: { duration: 0.7, ease: "easeInOut" }
+  }
 ];
 
 export default function Hero() {
@@ -80,95 +110,119 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((p) => (p + 1) % SLIDES.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
-  const yBg = useTransform(scrollY, [0, 800], [0, 150]);
   const opacityContent = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
     <section
       ref={containerRef}
-      className="relative h-screen flex flex-col overflow-hidden bg-industrial-black text-white"
+      className="relative h-screen flex flex-col justify-between overflow-hidden bg-industrial-bg text-industrial-text"
     >
-      {/* ── Full-screen Background Slideshow ── */}
-      <div className="absolute inset-0 z-0">
-        {SLIDES.map((slide, i) => (
-          <motion.div
-            key={i}
-            style={{ y: yBg }}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out ${
-              current === i ? "opacity-60" : "opacity-0"
-            }`}
-            aria-hidden={current !== i}
-          >
-            <div
-              className="w-full h-full scale-105"
-              style={{ backgroundImage: `url(${slide.src})` }}
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/* Engineering Grid Background */}
+      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none z-0" />
 
-      {/* Gradient vignette — keeps text readable without hiding the image */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-industrial-black via-industrial-black/30 to-industrial-black/60" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-industrial-black/70 via-transparent to-transparent" />
+      {/* Visual partition line between header and page content */}
+      <div className="absolute top-[80px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-industrial-border/50 to-transparent z-30 pointer-events-none" />
 
-      {/* ── Centered Minimal Content ── */}
+      {/* Main Split Content Area */}
       <motion.div
         style={{ opacity: opacityContent }}
-        className="relative z-20 flex-1 flex flex-col justify-end pb-32 md:pb-40 container mx-auto px-6"
+        className="relative z-20 flex-1 flex flex-col md:flex-row items-center justify-between container mx-auto px-6 pt-28 pb-6 gap-10 md:gap-16 w-full"
       >
-        {/* Slide caption changes with each image */}
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={current}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.5 }}
-            className="text-[11px] font-mono tracking-[0.25em] text-industrial-orange uppercase mb-5 block"
-          >
-            {SLIDES[current].caption}
-          </motion.span>
-        </AnimatePresence>
+        
+        {/* Left Column: Text Content */}
+        <div className="w-full md:w-[48%] flex flex-col justify-center min-h-[340px] text-left">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="space-y-5"
+            >
+              <span className="text-[11px] font-mono tracking-[0.25em] text-industrial-orange uppercase block">
+                {SLIDES[current].caption}
+              </span>
+              <h1 className="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] text-industrial-text uppercase">
+                {SLIDES[current].title}
+              </h1>
+              <p className="text-sm md:text-base text-industrial-text-secondary leading-relaxed max-w-lg">
+                {SLIDES[current].description}
+              </p>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-industrial-steel-medium hover:text-industrial-orange transition-colors group pt-2"
+              >
+                <span className="w-8 h-[1px] bg-industrial-orange inline-block group-hover:w-12 transition-all" />
+                {SLIDES[current].cta}
+              </Link>
+            </motion.div>
+          </AnimatePresence>
 
-        {/* Short punchy headline — two lines max */}
-        <h1 className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl tracking-tight leading-[1] text-white uppercase max-w-3xl">
-          Engineering Strength.
-          <br />
-          <span className="text-white/70">Casting Excellence.</span>
-        </h1>
-
-        {/* Single subtle CTA link */}
-        <Link
-          href="/products"
-          className="mt-8 inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-white/60 hover:text-industrial-orange transition-colors group w-fit"
-        >
-          <span className="w-8 h-[1px] bg-industrial-orange inline-block group-hover:w-12 transition-all" />
-          Explore Our Work
-        </Link>
-
-        {/* Slide indicator dots */}
-        <div className="flex gap-2 mt-10">
-          {SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-[3px] rounded-full transition-all duration-500 ${
-                current === i
-                  ? "w-8 bg-industrial-orange"
-                  : "w-3 bg-white/20 hover:bg-white/40"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+          {/* Slide indicator dots */}
+          <div className="flex gap-2 mt-10">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`h-[3px] rounded-full transition-all duration-500 ${
+                  current === i
+                    ? "w-8 bg-industrial-orange"
+                    : "w-3 bg-industrial-steel-light/30 hover:bg-industrial-steel-light/50"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
+
+        {/* Right Column: Slideshow */}
+        <div className="w-full md:w-[48%] flex items-center justify-center">
+          <div className="relative w-full aspect-[4/3] md:aspect-[1.3] overflow-hidden bg-transparent">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={ANIMATIONS[current].initial}
+                animate={ANIMATIONS[current].animate}
+                exit={ANIMATIONS[current].exit}
+                transition={ANIMATIONS[current].transition}
+                className="absolute inset-0 w-full h-full"
+              >
+                <div
+                  className="w-full h-full bg-cover bg-center mix-blend-multiply"
+                  style={{ backgroundImage: `url(${SLIDES[current].src})` }}
+                />
+              </motion.div>
+            </AnimatePresence>
+            
+            {/* Blending Feathered Overlays on all 4 edges */}
+            <div 
+              className="absolute inset-x-0 top-0 h-20 pointer-events-none z-10" 
+              style={{ background: "linear-gradient(to bottom, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
+            />
+            <div 
+              className="absolute inset-x-0 bottom-0 h-20 pointer-events-none z-10" 
+              style={{ background: "linear-gradient(to top, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
+            />
+            <div 
+              className="absolute inset-y-0 left-0 w-20 pointer-events-none z-10" 
+              style={{ background: "linear-gradient(to right, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
+            />
+            <div 
+              className="absolute inset-y-0 right-0 w-20 pointer-events-none z-10" 
+              style={{ background: "linear-gradient(to left, #FAFAFA 0%, rgba(250, 250, 250, 0.8) 25%, rgba(250, 250, 250, 0) 100%)" }}
+            />
+          </div>
+        </div>
+
       </motion.div>
 
       {/* ── Bottom Stats Bar ── */}
-      <div className="relative z-20 border-t border-white/10 bg-industrial-black/60 backdrop-blur-md">
+      <div className="relative z-20 border-t border-industrial-border bg-white/70 backdrop-blur-md">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,7 +240,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-[90px] md:bottom-[100px] right-6 hidden md:flex flex-col items-center gap-1 opacity-30 z-20 pointer-events-none">
-        <ChevronDown className="w-4 h-4 text-white animate-bounce" />
+        <ChevronDown className="w-4 h-4 text-industrial-text animate-bounce" />
       </div>
     </section>
   );

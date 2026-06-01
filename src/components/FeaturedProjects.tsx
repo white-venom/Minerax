@@ -63,31 +63,31 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <section className="py-24 bg-industrial-black text-white relative overflow-hidden border-t border-industrial-steel-dark/60">
+    <section className="py-24 bg-white text-industrial-text relative overflow-hidden border-t border-industrial-border">
       {/* Background elements */}
-      <div className="absolute inset-0 engineering-grid opacity-[0.08] pointer-events-none" />
+      <div className="absolute inset-0 engineering-grid opacity-[0.15] pointer-events-none" />
       <div className="absolute top-10 right-10 w-96 h-96 bg-industrial-orange/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-industrial-steel-dark/60">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-industrial-border">
           <div>
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block mb-3">
               08 // Portfolio
             </span>
-            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-white tracking-tight uppercase">
-              Featured <span className="text-industrial-steel-light">Projects</span>
+            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase">
+              Featured <span className="text-industrial-steel-medium">Projects</span>
             </h2>
           </div>
           
           <div className="flex items-center gap-4 mt-6 md:mt-0">
-            <span className="text-xs font-mono text-industrial-steel-light hidden md:inline">
+            <span className="text-xs font-mono text-industrial-text-secondary hidden md:inline">
               [ Drag cards to explore or scroll right ]
             </span>
             <button 
               onClick={scrollRight}
-              className="w-10 h-10 rounded border border-industrial-steel-medium flex items-center justify-center hover:border-industrial-orange hover:text-industrial-orange transition-colors group"
+              className="w-10 h-10 rounded border border-industrial-border flex items-center justify-center hover:border-industrial-orange hover:text-industrial-orange transition-colors group"
             >
               <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
             </button>
@@ -103,10 +103,10 @@ export default function FeaturedProjects() {
           {PROJECTS_DATA.map((proj, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-[310px] md:w-[420px] bg-industrial-graphite border border-industrial-steel-dark/80 rounded-xl p-6 md:p-8 flex flex-col justify-between snap-start glass-panel relative group"
+              className="flex-shrink-0 w-[310px] md:w-[420px] bg-industrial-bg-alt border border-industrial-border rounded-xl p-6 md:p-8 flex flex-col justify-between snap-start relative group shadow-sm hover:shadow-md transition-shadow"
             >
               {/* Corner mechanical visual */}
-              <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-steel-dark border-b border-l border-industrial-steel-dark/60 rounded-bl-lg flex items-center justify-center font-mono text-[10px] text-industrial-steel-light">
+              <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-border border-b border-l border-industrial-border rounded-bl-lg flex items-center justify-center font-mono text-[10px] text-industrial-text-muted">
                 P-0{idx + 1}
               </div>
 
@@ -114,31 +114,31 @@ export default function FeaturedProjects() {
                 <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase block mb-2">
                   {proj.client}
                 </span>
-                <h3 className="font-display font-extrabold text-lg md:text-xl text-white uppercase tracking-tight mb-4 pr-10">
+                <h3 className="font-display font-extrabold text-lg md:text-xl text-industrial-text uppercase tracking-tight mb-4 pr-10">
                   {proj.title}
                 </h3>
-                <p className="text-xs text-industrial-steel-light leading-relaxed mb-6">
+                <p className="text-xs text-industrial-text-secondary leading-relaxed mb-6">
                   {proj.desc}
                 </p>
               </div>
 
               {/* Specs Table */}
-              <div className="space-y-4 border-t border-industrial-steel-dark/60 pt-6">
+              <div className="space-y-4 border-t border-industrial-border pt-6">
                 <div className="grid grid-cols-2 gap-y-3 font-mono text-[10px]">
                   <div>
-                    <span className="text-white/40 block">Component Weight</span>
-                    <span className="text-white font-semibold">{proj.weight}</span>
+                    <span className="text-industrial-text-muted block">Component Weight</span>
+                    <span className="text-industrial-text font-semibold">{proj.weight}</span>
                   </div>
                   <div>
-                    <span className="text-white/40 block">Material Grade</span>
-                    <span className="text-white font-semibold">{proj.material}</span>
+                    <span className="text-industrial-text-muted block">Material Grade</span>
+                    <span className="text-industrial-text font-semibold">{proj.material}</span>
                   </div>
                   <div>
-                    <span className="text-white/40 block">Dimensions</span>
-                    <span className="text-white font-semibold">{proj.dimensions}</span>
+                    <span className="text-industrial-text-muted block">Dimensions</span>
+                    <span className="text-industrial-text font-semibold">{proj.dimensions}</span>
                   </div>
                   <div>
-                    <span className="text-white/40 block">Casting Yield</span>
+                    <span className="text-industrial-text-muted block">Casting Yield</span>
                     <span className="text-industrial-orange font-semibold">{proj.capacity}</span>
                   </div>
                 </div>

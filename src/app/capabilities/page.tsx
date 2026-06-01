@@ -4,7 +4,7 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/Header";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import ManufacturingExcellence from "@/components/ManufacturingExcellence";
-import VirtualFactory from "@/components/VirtualFactory";
+
 import QualityCertifications from "@/components/QualityCertifications";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
@@ -16,9 +16,9 @@ export default function CapabilitiesPage() {
       <CustomCursor />
       <Header />
 
-      <main className="relative z-20 min-h-screen bg-industrial-dark text-white pt-32">
+      <main className="relative z-20 min-h-screen bg-industrial-bg text-industrial-text pt-32">
         {/* Fine Engineering Grid */}
-        <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
 
         {/* Page Header */}
         <div className="container mx-auto px-6 py-12 relative z-10">
@@ -31,10 +31,10 @@ export default function CapabilitiesPage() {
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block">
               MineraX Manufacturing Capabilities
             </span>
-            <h1 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-white">
-              Foundry & <span className="text-industrial-steel-light">Metallurgy</span>
+            <h1 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-industrial-text">
+              Foundry & <span className="text-industrial-steel-medium">Metallurgy</span>
             </h1>
-            <p className="text-sm md:text-base text-industrial-steel-light leading-relaxed">
+            <p className="text-sm md:text-base text-industrial-text-secondary leading-relaxed">
               Explore our engineering capabilities: from heavy sand casting mold lines to robotic induction melting furnaces and advanced non-destructive microstructure validation.
             </p>
           </motion.div>
@@ -46,8 +46,7 @@ export default function CapabilitiesPage() {
         {/* 2. Manufacturing Excellence (SVG pulses) */}
         <ManufacturingExcellence />
 
-        {/* 3. Interactive 3D Telemetry Grid */}
-        <VirtualFactory />
+
 
         {/* 4. Quality Auditing details */}
         <QualityCertifications />

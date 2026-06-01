@@ -8,7 +8,6 @@ import * as THREE from "three";
 function MetalCastingMesh() {
   const meshRef = useRef<THREE.Group>(null);
   
-  // Rotate slowly in the background
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.25;
@@ -62,7 +61,7 @@ function MetalCastingMesh() {
         <mesh key={i} castShadow receiveShadow position={[0, yPos, 0]}>
           <cylinderGeometry args={[1.35, 1.35, 0.08, 32]} />
           <meshStandardMaterial
-            color="#FF5500" // Glowing orange heat in internal grooves
+            color="#FF5500"
             emissive="#FF2200"
             emissiveIntensity={0.15}
             roughness={0.4}
@@ -103,33 +102,33 @@ export default function ThreeCasting() {
 
   if (!mounted) {
     return (
-      <div className="w-full h-[400px] flex items-center justify-center bg-industrial-graphite/40 border border-industrial-steel-dark rounded-lg relative overflow-hidden">
+      <div className="w-full h-[400px] flex items-center justify-center bg-industrial-bg-alt border border-industrial-border rounded-lg relative overflow-hidden">
         <div className="absolute inset-0 engineering-grid opacity-30" />
         <div className="flex flex-col items-center gap-3">
           <div className="w-10 h-10 border-4 border-industrial-orange border-t-transparent rounded-full animate-spin" />
-          <p className="text-industrial-steel-light font-display text-sm uppercase tracking-wider">Loading 3D Foundry Component...</p>
+          <p className="text-industrial-text-secondary font-display text-sm uppercase tracking-wider">Loading 3D Foundry Component...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-[400px] bg-industrial-black/80 border border-industrial-steel-dark/60 rounded-xl relative overflow-hidden shadow-2xl">
+    <div className="w-full h-[400px] bg-white border border-industrial-border rounded-xl relative overflow-hidden shadow-md">
       <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
       <div className="absolute top-4 left-4 z-20 flex flex-col pointer-events-none">
         <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase">Active Viewport</span>
-        <span className="text-xs font-semibold text-white tracking-wider font-display">MINERAX-CAST_V4.STP</span>
+        <span className="text-xs font-semibold text-industrial-text tracking-wider font-display">MINERAX-CAST_V4.STP</span>
       </div>
 
       <div className="absolute bottom-4 right-4 z-20 flex gap-2 pointer-events-none">
-        <div className="flex items-center gap-1.5 px-2 py-1 bg-industrial-dark/90 border border-industrial-steel-dark rounded text-[10px] font-mono text-industrial-steel-light">
+        <div className="flex items-center gap-1.5 px-2 py-1 bg-white/90 border border-industrial-border rounded text-[10px] font-mono text-industrial-text-secondary">
           <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
           INTERACTIVE 3D
         </div>
       </div>
 
       <Canvas shadows camera={{ position: [0, 0, 4], fov: 50 }} className="w-full h-full cursor-grab active:cursor-grabbing">
-        <color attach="background" args={["#0B0B0C"]} />
+        <color attach="background" args={["#FAFAFA"]} />
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1.5} castShadow />
         <directionalLight position={[-10, 10, -5]} intensity={1.2} />

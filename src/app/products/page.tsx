@@ -15,9 +15,9 @@ export default function ProductsPage() {
       <CustomCursor />
       <Header />
 
-      <main className="relative z-20 min-h-screen bg-industrial-dark text-white pt-32">
+      <main className="relative z-20 min-h-screen bg-industrial-bg text-industrial-text pt-32">
         {/* Fine Engineering Grid */}
-        <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
 
         {/* Page Header */}
         <div className="container mx-auto px-6 py-12 relative z-10">
@@ -30,10 +30,10 @@ export default function ProductsPage() {
             <span className="text-xs font-mono tracking-widest text-industrial-orange uppercase block">
               MineraX Machinery & Equipment
             </span>
-            <h1 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-white">
-              Industrial <span className="text-industrial-steel-light">Casting Systems</span>
+            <h1 className="text-4xl md:text-6xl font-display font-extrabold uppercase tracking-tight text-industrial-text">
+              Industrial <span className="text-industrial-steel-medium">Casting Systems</span>
             </h1>
-            <p className="text-sm md:text-base text-industrial-steel-light leading-relaxed">
+            <p className="text-sm md:text-base text-industrial-text-secondary leading-relaxed">
               Explore our line of medium-frequency induction furnaces, high-pressure flaskless sand molding systems, and automated material charging arrays engineered for smart foundries.
             </p>
           </motion.div>
@@ -46,33 +46,33 @@ export default function ProductsPage() {
         <FeaturedProjects />
 
         {/* Auxiliary spec indicators */}
-        <section className="py-16 bg-industrial-black/40 border-t border-industrial-steel-dark/60">
+        <section className="py-16 bg-white border-t border-industrial-border">
           <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex gap-4 items-start text-left">
-              <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange flex-shrink-0">
+              <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange flex-shrink-0">
                 <Cpu className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm uppercase text-white tracking-wider">PLC Automation Integration</h4>
-                <p className="text-xs text-industrial-steel-light mt-1">All machines include Siemens S7-1500 controllers supporting Profinet diagnostics.</p>
+                <h4 className="font-display font-bold text-sm uppercase text-industrial-text tracking-wider">PLC Automation Integration</h4>
+                <p className="text-xs text-industrial-text-secondary mt-1">All machines include Siemens S7-1500 controllers supporting Profinet diagnostics.</p>
               </div>
             </div>
             <div className="flex gap-4 items-start text-left">
-              <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange flex-shrink-0">
+              <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange flex-shrink-0">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm uppercase text-white tracking-wider">CE & ASME Certified</h4>
-                <p className="text-xs text-industrial-steel-light mt-1">Pressure vessels and induction vats satisfy ASME Sec VIII Div 1 rules.</p>
+                <h4 className="font-display font-bold text-sm uppercase text-industrial-text tracking-wider">CE & ASME Certified</h4>
+                <p className="text-xs text-industrial-text-secondary mt-1">Pressure vessels and induction vats satisfy ASME Sec VIII Div 1 rules.</p>
               </div>
             </div>
             <div className="flex gap-4 items-start text-left">
-              <div className="w-10 h-10 rounded bg-industrial-graphite border border-industrial-steel-dark flex items-center justify-center text-industrial-orange flex-shrink-0">
+              <div className="w-10 h-10 rounded bg-industrial-orange-light border border-industrial-orange/20 flex items-center justify-center text-industrial-orange flex-shrink-0">
                 <Box className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-display font-bold text-sm uppercase text-white tracking-wider">Custom Pattern Design</h4>
-                <p className="text-xs text-industrial-steel-light mt-1">Our engineering department delivers 3D CAD patterns optimized for fluid solidification.</p>
+                <h4 className="font-display font-bold text-sm uppercase text-industrial-text tracking-wider">Custom Pattern Design</h4>
+                <p className="text-xs text-industrial-text-secondary mt-1">Our engineering department delivers 3D CAD patterns optimized for fluid solidification.</p>
               </div>
             </div>
           </div>
