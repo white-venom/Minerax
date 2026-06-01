@@ -119,7 +119,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen flex flex-col justify-between overflow-hidden bg-industrial-bg text-industrial-text"
+      className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-industrial-bg text-industrial-text"
     >
       {/* Engineering Grid Background */}
       <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none z-0" />
@@ -226,7 +226,7 @@ export default function Hero() {
       </motion.div>
 
       {/* ── Bottom Stats Bar ── */}
-      <div className="relative z-20 border-t border-industrial-border bg-white/70 backdrop-blur-md">
+      <div className="relative z-20 border-t border-b border-industrial-border/30 bg-transparent">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
