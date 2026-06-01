@@ -1,20 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Preloader from "@/components/ui/Preloader";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import CompanyIntro from "@/components/CompanyIntro";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import ProductsPreview from "@/components/ProductsPreview";
 import ManufacturingExcellence from "@/components/ManufacturingExcellence";
 
 import FeaturedProjects from "@/components/FeaturedProjects";
-import QualityCertifications from "@/components/QualityCertifications";
 import Testimonials from "@/components/Testimonials";
-import LatestInsights from "@/components/LatestInsights";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 
@@ -36,9 +32,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Premium Loading Preloader */}
-      <Preloader />
-
       {/* Custom Industrial Laser Cursor */}
       <CustomCursor />
 
@@ -65,8 +58,7 @@ export default function Home() {
         {/* 4. Why Choose MineraX */}
         <WhyChooseUs />
 
-        {/* 5. Products Preview Section */}
-        <ProductsPreview />
+
 
         {/* 7. Manufacturing Excellence Section */}
         <ManufacturingExcellence />
@@ -76,14 +68,9 @@ export default function Home() {
         {/* 9. Featured Projects */}
         <FeaturedProjects />
 
-        {/* 10. Quality & Certifications */}
-        <QualityCertifications />
-
         {/* 11. Testimonials */}
         <Testimonials />
 
-        {/* 12. Latest Insights Section */}
-        <LatestInsights />
 
         {/* 13. Call To Action Section */}
         <CallToAction />

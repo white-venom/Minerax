@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import MagneticButton from "./ui/MagneticButton";
-import { Send, PhoneCall } from "lucide-react";
+import { Send, PhoneCall, ArrowRight } from "lucide-react";
 
 export default function CallToAction() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -139,6 +139,18 @@ export default function CallToAction() {
           <p className="text-sm md:text-base text-industrial-text-secondary max-w-2xl mx-auto leading-relaxed pt-2">
             Connect with our lead metallurgical engineers today to outline custom alloy specs, mold dimensions, or arrange turnkey foundry installations.
           </p>
+
+          <div className="pt-6 flex justify-center">
+            <MagneticButton>
+              <Link
+                href="/review-bulletin"
+                className="inline-flex items-center gap-2 px-6 py-3.5 industrial-plate-btn text-xs font-mono rounded-none"
+              >
+                READ REVIEWS
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </MagneticButton>
+          </div>
         </motion.div>
 
 
