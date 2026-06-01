@@ -9,33 +9,6 @@ function MetalCastingMesh() {
   const { scene } = useGLTF("/model.glb");
   const meshRef = useRef<THREE.Group>(null);
 
-  useEffect(() => {
-    scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        if (child.material) {
-          const materials = Array.isArray(child.material) ? child.material : [child.material];
-          materials.forEach((mat) => {
-            if (mat instanceof THREE.MeshStandardMaterial) {
-              // Convert to a natural shiny steel alloy
-              mat.color.set("#b0b4b8"); // Steel grey alloy color
-              mat.map = null;
-              mat.roughnessMap = null;
-              mat.metalnessMap = null;
-              mat.aoMap = null;
-              mat.roughness = 0.25;   // Smooth/satin finish for shiny metallic highlights
-              mat.metalness = 0.95;   // High metalness for realistic alloy reflections
-              mat.needsUpdate = true; // Recompile shaders
-            } else if ('color' in mat && mat.color && typeof mat.color.set === 'function') {
-              (mat as any).color.set("#b0b4b8");
-              if ('map' in mat) (mat as any).map = null;
-              mat.needsUpdate = true;
-            }
-          });
-        }
-      }
-    });
-  }, [scene]);
-
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15;
@@ -90,15 +63,15 @@ export default function ThreeCasting() {
   }
  
   return (
-    <div ref={containerRef} className="w-full h-[400px] bg-[#12151c] border border-industrial-border/20 rounded-xl relative overflow-hidden shadow-lg">
+    <div ref={containerRef} className="w-full h-[400px] bg-[#d0d0d0] border border-industrial-border/30 rounded-xl relative overflow-hidden shadow-md">
       <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
       <div className="absolute top-4 left-4 z-20 flex flex-col pointer-events-none">
         <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase">Active Viewport</span>
-        <span className="text-xs font-semibold text-white/90 tracking-wider font-display">MINERAX-CAST_V4.STP</span>
+        <span className="text-xs font-semibold text-industrial-text tracking-wider font-display">MINERAX-CAST_V4.STP</span>
       </div>
  
       <div className="absolute bottom-4 right-4 z-20 flex gap-2 pointer-events-none">
-        <div className="flex items-center gap-1.5 px-2 py-1 bg-[#12151c]/80 border border-white/10 rounded text-[10px] font-mono text-white/70">
+        <div className="flex items-center gap-1.5 px-2 py-1 bg-white/70 border border-industrial-border rounded text-[10px] font-mono text-industrial-text-secondary">
           <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
           INTERACTIVE 3D
         </div>
@@ -111,13 +84,15 @@ export default function ThreeCasting() {
         frameloop={isInView ? "always" : "never"}
         className="w-full h-full cursor-grab active:cursor-grabbing"
       >
-        <color attach="background" args={["#12151c"]} />
-        <ambientLight intensity={1.2} />
-        <pointLight position={[10, 10, 10]} intensity={1.5} />
-        <directionalLight position={[-10, 10, -5]} intensity={1.5} />
+        <color attach="background" args={["#d0d0d0"]} />
+        <ambientLight intensity={1.8} />
+        <pointLight position={[10, 10, 10]} intensity={2.0} />
+        <directionalLight position={[-10, 10, -5]} intensity={2.0} />
+        <directionalLight position={[5, 5, 10]} intensity={1.5} />
         
-        {/* Soft glowing rim light to represent furnace background */}
-        <pointLight position={[-3, -2, -3]} intensity={2.0} color="#FF5500" />
+        {/* Rim lights for edge definition against grey background */}
+        <pointLight position={[-3, -2, -3]} intensity={2.5} color="#FF5500" />
+        <pointLight position={[3, 3, -5]} intensity={1.5} color="#ffffff" />
         
         <Suspense fallback={null}>
           {/* Procedural environment map for premium metallic reflections (computed once) */}
