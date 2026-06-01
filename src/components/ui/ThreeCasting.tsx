@@ -16,10 +16,19 @@ function MetalCastingMesh() {
           const materials = Array.isArray(child.material) ? child.material : [child.material];
           materials.forEach((mat) => {
             if (mat instanceof THREE.MeshStandardMaterial) {
-              // Set the color explicitly to a premium metallic steel grey
-              mat.color.set("#a0a0a0");
-              mat.roughness = 0.35; // satin reflections
-              mat.metalness = 0.85; // metallic reflections
+              // Convert to a natural shiny steel alloy
+              mat.color.set("#b0b4b8"); // Steel grey alloy color
+              mat.map = null;
+              mat.roughnessMap = null;
+              mat.metalnessMap = null;
+              mat.aoMap = null;
+              mat.roughness = 0.25;   // Smooth/satin finish for shiny metallic highlights
+              mat.metalness = 0.95;   // High metalness for realistic alloy reflections
+              mat.needsUpdate = true; // Recompile shaders
+            } else if ('color' in mat && mat.color && typeof mat.color.set === 'function') {
+              (mat as any).color.set("#b0b4b8");
+              if ('map' in mat) (mat as any).map = null;
+              mat.needsUpdate = true;
             }
           });
         }
@@ -81,15 +90,15 @@ export default function ThreeCasting() {
   }
  
   return (
-    <div ref={containerRef} className="w-full h-[400px] bg-white border border-industrial-border rounded-xl relative overflow-hidden shadow-md">
-      <div className="absolute inset-0 engineering-grid opacity-20 pointer-events-none" />
+    <div ref={containerRef} className="w-full h-[400px] bg-[#12151c] border border-industrial-border/20 rounded-xl relative overflow-hidden shadow-lg">
+      <div className="absolute inset-0 engineering-grid opacity-10 pointer-events-none" />
       <div className="absolute top-4 left-4 z-20 flex flex-col pointer-events-none">
         <span className="text-[10px] font-mono tracking-widest text-industrial-orange uppercase">Active Viewport</span>
-        <span className="text-xs font-semibold text-industrial-text tracking-wider font-display">MINERAX-CAST_V4.STP</span>
+        <span className="text-xs font-semibold text-white/90 tracking-wider font-display">MINERAX-CAST_V4.STP</span>
       </div>
  
       <div className="absolute bottom-4 right-4 z-20 flex gap-2 pointer-events-none">
-        <div className="flex items-center gap-1.5 px-2 py-1 bg-white/90 border border-industrial-border rounded text-[10px] font-mono text-industrial-text-secondary">
+        <div className="flex items-center gap-1.5 px-2 py-1 bg-[#12151c]/80 border border-white/10 rounded text-[10px] font-mono text-white/70">
           <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
           INTERACTIVE 3D
         </div>
@@ -102,7 +111,7 @@ export default function ThreeCasting() {
         frameloop={isInView ? "always" : "never"}
         className="w-full h-full cursor-grab active:cursor-grabbing"
       >
-        <color attach="background" args={["#FAFAFA"]} />
+        <color attach="background" args={["#12151c"]} />
         <ambientLight intensity={1.2} />
         <pointLight position={[10, 10, 10]} intensity={1.5} />
         <directionalLight position={[-10, 10, -5]} intensity={1.5} />
