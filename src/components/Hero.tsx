@@ -183,25 +183,31 @@ export default function Hero() {
         {/* Right Column: Slideshow */}
         <div className="w-full md:w-[48%] flex items-center justify-center">
           <div className="relative w-full aspect-[4/3] md:aspect-[1.3] overflow-hidden rounded-2xl border border-industrial-border/10 shadow-lg bg-white">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={ANIMATIONS[current].initial}
-                animate={ANIMATIONS[current].animate}
-                exit={ANIMATIONS[current].exit}
-                transition={ANIMATIONS[current].transition}
-                className="absolute inset-0 w-full h-full"
-              >
-                <video
-                  src={SLIDES[current].videoSrc}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </AnimatePresence>
+            {SLIDES.map((slide, idx) => {
+              const isCurrent = current === idx;
+              const anim = ANIMATIONS[idx];
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={anim.initial}
+                  animate={isCurrent ? anim.animate : anim.exit}
+                  transition={anim.transition}
+                  className="absolute inset-0 w-full h-full"
+                  style={{ pointerEvents: isCurrent ? "auto" : "none" }}
+                >
+                  <video
+                    src={slide.videoSrc}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              );
+            })}
             
             {/* Blending Feathered Overlays on all 4 edges */}
             <div 
