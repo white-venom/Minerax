@@ -84,10 +84,10 @@ export default function WhyChooseUs() {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-display font-bold tracking-widest text-industrial-orange uppercase block mb-3">
-            04 // Why Choose mineraX
+            04 // Why Choose <span className="normal-case">mineraX</span>
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-extrabold text-industrial-text tracking-tight uppercase mb-4">
-            Why Partner With <span className="text-industrial-steel-medium">mineraX</span>
+            Why Partner With <span className="text-industrial-steel-medium normal-case">mineraX</span>
           </h2>
           <p className="text-sm text-industrial-text-secondary leading-relaxed">
             Delivering the perfect synergy of metallurgical expertise, state-of-the-art foundry machinery, and absolute quality commitment.
